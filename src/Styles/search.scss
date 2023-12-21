@@ -1,0 +1,50 @@
+.search {
+  
+  > form {
+    display: flex;
+    margin-left: 5rem;
+    box-shadow: 0 0 4px 0 rgb(79, 79, 122);
+    > input {
+      height: 2.4rem;
+      width: 30rem;
+      background-color: white;
+      border: none;
+      outline: none;
+      padding: 1rem;
+    }
+
+    button {
+      height: 2.4rem;
+      width: 2.5rem;
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(255, 255, 255);
+      
+      > svg {
+        font-size: 1.5rem;
+        color: #2874f0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .search {
+    background-color: #2874f0;
+    padding: 0.5rem;
+    width: 100vw;
+    form {
+      margin-left: 0rem;
+      background-color: rgb(255, 255, 255);
+      > input {
+        width: 100vw;
+      }
+      button {
+        width: 13vw;
+      }
+    }
+  }
+}

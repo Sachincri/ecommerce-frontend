@@ -1,0 +1,128 @@
+@import "colors";
+
+.profile {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  > section:first-child {
+    display: flex;
+    width: 40vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    > div {
+      display: flex;
+      height: 20.5rem;
+      width: 20.5rem;
+      border-radius: 20.5rem;
+      align-items: center;
+      justify-content: center;
+      background: #2874f0;
+
+      > img {
+        height: 20rem;
+        width: 20rem;
+        border-radius: 25rem;
+        object-fit: contain;
+        background-color: white;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.146);
+      }
+    }
+    > button {
+      display: flex;
+      height: 1.5rem;
+      width: 1.5rem;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      background: rgb(7, 3, 36);
+      border-radius: 1.5rem;
+      transform: translate(5rem, -2.1rem);
+    }
+  }
+  > section:nth-child(2n) {
+    display: flex;
+    width: 50vw;
+    padding-left: 8rem;
+    border-left: 3px solid #2874f0;
+    flex-direction: column;
+
+    > p {
+      width: 80%;
+      margin: 0.8rem;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #2874f0;
+    }
+
+    > a {
+      width: 30%;
+      margin: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.5rem;
+      color: #ffffff;
+      background: rgb(7, 3, 36);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    > button {
+      margin: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.5rem;
+      width: 30%;
+      border: none;
+      color: #ffffff;
+      background: rgb(7, 3, 36);
+      border-radius: 4px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile {
+    width: 100%;
+    flex-direction: column;
+
+    > section:first-child {
+      width: 100%;
+      > div {
+        height: 10rem;
+        width: 10rem;
+        > img {
+          height: 9.7rem;
+          width: 9.7rem;
+        }
+      }
+
+      > button {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    > section:nth-child(2n) {
+      border: none;
+      width: 100%;
+      padding: 0;
+      > p {
+        width: 95vw;
+        font-size: 1.2rem;
+      }
+      > a {
+        width: 95vw;
+      }
+
+      > button {
+        width: 95vw;
+      }
+    }
+  }
+}

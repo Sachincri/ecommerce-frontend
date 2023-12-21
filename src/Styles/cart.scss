@@ -1,0 +1,313 @@
+@import "colors";
+
+.emptyCart {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  > h1 {
+    margin-top: 5rem;
+    color: rgb(76, 77, 83);
+  }
+
+  > svg {
+    margin-top: 3rem;
+    font-size: 10rem;
+    color: rgb(224, 7, 0);
+    font-weight: 200;
+  }
+  > a {
+    > button {
+      margin-top: 3rem;
+      height: 3rem;
+      width: 14rem;
+      border: none;
+      border-radius: 5px;
+      background: #211e3a;
+      color: #ffffff;
+    }
+  }
+}
+
+.cart {
+  width: 100%;
+  padding-bottom: 7rem;
+  background-color: $bg;
+
+  > section:first-child {
+    display: flex;
+    height: fit-content;
+    border-radius: 2px;
+    justify-content: center;
+
+    > div {
+      border-radius: 5px 5px 0 0;
+      width: 50rem;
+      background: $bg;
+      margin-top: 1.5rem;
+      border-left: 1px solid rgb(218, 213, 213);
+      border-right: 1px solid rgb(218, 213, 213);
+      border-bottom: none;
+
+      > h3 {
+        display: flex;
+        height: 4rem;
+        align-items: center;
+        padding: 1.3rem;
+        font-weight: 400;
+        border-radius: 5px 5px 0 0;
+        background-color: rgb(255, 255, 255);
+      }
+      > p {
+        height: 3.8rem;
+        margin-top: 0.7rem;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        align-items: center;
+        word-spacing: 3px;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #f1f1f1;
+        justify-content: space-between;
+
+        a {
+          padding: 0.4rem 1rem;
+          border-radius: 5px;
+          border: 1.5px solid rgb(239, 239, 241);
+          color: #1422eb;
+
+          &:hover {
+            box-shadow: 0 0 5px 0 rgb(190, 190, 209);
+          }
+        }
+      }
+      > div {
+        margin-top: 0.7rem;
+
+        div {
+          background-color: rgb(255, 255, 255);
+        }
+      }
+    }
+    > aside {
+      position: sticky;
+      top: 3.5rem;
+      margin-left: 1.5rem;
+      margin-top: 1.5rem;
+      width: 25rem;
+      height: 20rem;
+      margin-bottom: 3rem;
+      border-radius: 2px;
+      box-shadow: 0 2px 0 rgb(212, 211, 211);
+      justify-content: center;
+      background-color: rgb(255, 255, 255);
+
+      > h3 {
+        display: flex;
+        height: 3rem;
+        color: #1d1b1b;
+        font-weight: 400;
+        align-items: center;
+        padding-left: 1rem;
+        border-bottom: 1px solid rgb(238, 232, 232);
+      }
+
+      > div {
+        display: flex;
+        justify-content: space-between;
+
+        > p {
+          margin: 0.9rem;
+        }
+      }
+
+      > p {
+        word-spacing: 3px;
+        color: #1c771c;
+        padding-left: 1rem;
+        padding-top: 0.3rem;
+      }
+      > span {
+        display: flex;
+        color: #b9b3b3;
+        justify-content: center;
+      }
+    }
+  }
+  section:nth-child(2n) {
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    width: 50.1rem;
+    height: 5rem;
+    position: sticky;
+    margin-left: 3.9rem;
+    box-shadow: 0 -6px 10px 0 rgba(66, 66, 66, 0.1);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(218, 213, 213);
+    border-top: none;
+    > button {
+      margin-left: 33rem;
+      height: 3rem;
+      width: 14rem;
+      border: none;
+      background: #fb641b;
+      color: #ffffff;
+    }
+  }
+}
+
+.cartItem {
+  height: 14rem;
+  background-color: rgb(247, 245, 245);
+  border-top: 1px solid #e9e8e8;
+  > div:first-child {
+    display: flex;
+
+    > img {
+      height: 8rem;
+      margin: 1rem;
+      width: 9rem;
+      object-fit: contain;
+    }
+
+    > div {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      height: 4rem;
+      margin-top: 1.5rem;
+      padding-left: 2rem;
+
+      > a {
+        color: #000;
+      }
+      > span {
+        margin-top: 1.3rem;
+        width: 100%;
+        > span {
+          margin-left: 1rem;
+          color: #929292;
+          font-weight: 400;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+
+  div:nth-child(2n) {
+    display: flex;
+    align-items: center;
+
+    > article {
+      display: flex;
+      align-items: center;
+      margin: 1rem;
+      margin-left: 2rem;
+
+      > input {
+        text-align: center;
+        width: 4rem;
+        padding-left: 1.2rem;
+        height: 1.8rem;
+        font-size: 1rem;
+        margin: 0 0.3rem;
+        border: 1px solid rgb(201, 202, 206);
+      }
+
+      > button {
+        border-radius: 50%;
+        cursor: pointer;
+        width: 1.8rem;
+        height: 1.8rem;
+        font-weight: 800;
+        font-size: 1rem;
+        background-color: #fff;
+        border: 1px solid rgb(201, 202, 206);
+      }
+    }
+    > p {
+      padding-left: 6rem;
+      cursor: pointer;
+      color: #ff1e00;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cart {
+    width: 100%;
+    padding-bottom: 0rem;
+
+    > section:first-child {
+      width: 100%;
+      overflow-x: inherit;
+      height: fit-content;
+      flex-direction: column;
+
+      > div {
+        width: 100vw;
+        margin-top: 0;
+        height: fit-content;
+        box-shadow: 0 0 2px 0 rgb(190, 190, 209);
+
+        > h3 {
+          box-shadow: 0 2px 0 rgb(228, 228, 241);
+        }
+
+        > p {
+          margin-top: 0.5rem;
+          box-shadow: 0 0 2px 0 rgb(190, 190, 209);
+        }
+        > div {
+          margin-top: 0.5rem;
+          box-shadow: 0 0 2px 0 rgb(190, 190, 209);
+        }
+      }
+
+      > aside {
+        width: 100vw;
+        height: 18rem;
+        margin: 0;
+        margin-top: 0.5rem;
+
+        > div {
+          > p {
+            margin: 0.7rem;
+          }
+        }
+        > span {
+          word-spacing: 1px;
+        }
+      }
+    }
+    > section:nth-child(2n) {
+      width: 100%;
+      margin: 0;
+      height: 5rem;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      border: 2px solid rgb(226, 220, 220);
+      > button {
+        margin-left: 13.5rem;
+        border-radius: 5px;
+        padding: 0;
+        width: 10rem;
+        height: 3rem;
+      }
+    }
+  }
+  .cartItem {
+    > div {
+      > div {
+        align-items: center;
+        margin-top: 1rem;
+        padding: 0;
+
+      }
+      
+    }
+  }
+}

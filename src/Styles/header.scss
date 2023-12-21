@@ -1,0 +1,93 @@
+@import "colors";
+
+.nav {
+  display: flex;
+  width: 100%;
+  height: 3.8rem;
+  align-items: center;
+  background-color: #2874f0;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  > div {
+    display: flex;
+    align-items: center;
+
+    > img {
+      height: 4rem;
+      width: 4rem;
+      filter: drop-shadow(0 0 10px rgba(133, 131, 131, 0.566));
+      margin-left: 11rem;
+    }
+
+    > a {
+      color: $white;
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      margin-left: 5rem;
+
+      > svg {
+        color: $white;
+        transition: inherit;
+        font-size: 2rem;
+      }
+      > p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        border-radius: 0.5rem;
+        color: #ffffff;
+        width: 1.2rem;
+        height: 1.2rem;
+        font: 400 0.8rem;
+        transform: translate(3rem, -1.2rem);
+        border: 2px solid rgb(255, 255, 255);
+        background-color: #ff0000;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav {
+    align-items: self-start;
+    height: 6.5rem;
+    padding: 0.4rem;
+    position: sticky;
+    top: -2.8rem;
+    z-index: 100;
+    justify-content: space-between;
+
+    > div:first-child {
+      > img {
+        margin-left: 0;
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+      }
+    }
+    > span:nth-child(2n) {
+      position: relative;
+      right: 47px;
+      background-color: rgb(6, 8, 32);
+      top: 2.5rem;
+    }
+
+    > div:nth-child(3n) {
+      position: relative;
+      right: 14.1rem;
+      a {
+        margin: 0 0.5rem;
+        > svg {
+          margin-top: 0.3rem;
+        }
+        > p {
+          font: 400 0.5rem;
+          transform: translate(3rem, -1rem);
+        }
+      }
+    }
+  }
+}

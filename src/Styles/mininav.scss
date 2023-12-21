@@ -1,0 +1,20 @@
+.mininav {
+  filter: drop-shadow(0 0 2px rgba(51, 50, 50, 0.566));
+  > ul {
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    background: #ffffff;
+    overflow: auto;
+
+    > li {
+      margin: auto;
+      list-style: none;
+      cursor: pointer;
+      > a {
+        font-size: 0.9rem;
+        color: rgb(4, 2, 17);
+      }
+    }
+  }
+}

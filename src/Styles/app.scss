@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: "Roboto";
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@import "colors";
+@import "home";
+@import "header";
+@import "mininav.scss";
+@import "search";
+@import "footer";
+@import "cart";
+@import "confirmOrderPage";
+@import "profile";
+@import "productcard";
+@import "reviewCard";
+@import "dashbord";
+@import "productdetails";
+@import "productpage";
+@import "login";
+@import "shipping";
+@import "table";
+@import "sidebar";
+@import "newProduct";
+@import "confirmorder";
+@import "forgetpassword";
+@import "myorders";
+@import "orderDetailsPage";
+@import "loading";
+@import "actions";
+@import "payment";
+@import "orderSuccess";
+@import "CheckoutSteps";
+@import "notfound";
+
+
+@mixin heading($spacing: 3px, $weight: 300, $case: uppercase) {
+  letter-spacing: $spacing;
+  font-weight: $weight;
+  text-transform: $case;
+}
+
+@mixin flex(
+  $dir: row,
+  $justifyContent: center,
+  $alignItems: center,
+  $gap: 1rem
+) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  gap: $gap;
+}
+@mixin grid($col: 1fr, $gap: 1rem, $row: unset) {
+  display: grid;
+  grid-template-columns: $col;
+  grid-template-rows: $row;
+  gap: $gap;
+}
+
+@mixin inputStyle($w: 100%, $p: 1rem, $bgColor: inherit, $border: none) {
+  padding: $p;
+  border: $border;
+  background-color: $bgColor;
+  width: $w;
+  outline: none;
+}
+
+@mixin posCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin square($s: 1rem) {
+  height: $s;
+  width: $s;
+}
+

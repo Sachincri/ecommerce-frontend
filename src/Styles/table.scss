@@ -1,0 +1,32 @@
+@import "colors";
+
+.tableClass {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    > h1 {
+      text-align: center;
+      font-size: 2rem ;
+      padding: 1rem;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .tableClass {
+    
+    width: 100%;
+    height: 100vh;
+
+    > div {
+       margin-left: -12rem;
+    }
+  }
+}

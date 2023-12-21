@@ -1,0 +1,20 @@
+.action {
+  a {
+    > svg {
+      margin-right: 2.5rem;
+      color: #1c1f36;
+      font-size: 1.3rem;
+    }
+  }
+
+  > button {
+    background: #ffffff;
+    margin-right: 1rem;
+    border: none;
+
+    > svg {
+        color: #eb0000;
+        font-size: 1.3rem;
+      }
+  }
+}

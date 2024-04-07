@@ -36,14 +36,14 @@ export const orderReducer = createReducer(
 );
 
 export const ordersReducer = createReducer(
-  { orders: [], order: {}},
+  { orders: [], order: {} },
   {
     getMyOrdersRequest: (state) => {
       state.loading = true;
     },
     getMyOrdersSuccess: (state, action) => {
       state.loading = false;
-      state.orders = action.payload;
+      state.orders = action.payload.orders;
     },
     getMyOrdersFail: (state, action) => {
       state.loading = false;

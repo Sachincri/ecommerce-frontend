@@ -1,5 +1,5 @@
 import React from "react";
-import { Button} from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { forgetPassword } from "../../Redux/action/profile";
@@ -28,9 +28,7 @@ const ForgetPassword = () => {
   }, [dispatch, error, message]);
 
   return (
-    
     <main className="forgetpassword">
-
       <h1>ForgetPassword</h1>
       <form onSubmit={submitHandler}>
         <input

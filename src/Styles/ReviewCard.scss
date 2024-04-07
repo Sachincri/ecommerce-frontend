@@ -1,5 +1,5 @@
 .reviewCard {
-  min-height: 6rem;
+  min-height: 7rem;
   width: 100%;
   padding: 1rem;
   border: 1px solid rgb(238, 238, 238);
@@ -10,13 +10,9 @@
     align-items: center;
 
     span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 1.1rem;
-      width: 2rem;
+      @include flex($h: 1.1rem, $w: 2rem);
       font-size: 0.9rem;
-      color: #ffffff;
+      color: $white;
       border-radius: 5px;
       margin-right: 1rem;
       background-color: #186b18;

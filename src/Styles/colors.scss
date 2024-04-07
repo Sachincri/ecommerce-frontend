@@ -1,16 +1,37 @@
-$c1: rgba(102, 96, 93, 0.24);
-$c2: rgb(245, 120, 104);
-$c3: rgb(167, 46, 66);
-$c4: rgb(136, 76, 192);
-$c7: rgb(207, 170, 245);
-$c5: rgb(49, 45, 45);
-$c6: rgb(5, 5, 36);
-$red: rgb(156, 0, 60);
-$darkblack: rgb(59, 58, 58);
-$dark: rgb(33, 33, 33);
-$pink: rgb(33, 33, 33);
-$lightdark: rgba(33, 33, 33, 0.711);
 $white: rgb(255, 255, 255);
-$text1: rgba(0, 0, 39, 0.711);
+$text1: rgba(21, 21, 24, 0.711);
 
 $bg: #f1f3f6;
+$bg2: #fff;
+$b1: rgb(216, 212, 212);
+$b2: rgb(235, 235, 235);
+$c1: #2874f0;
+
+@mixin flex($dir: row, $w: 100%, $h: auto, $j-c: center, $a-i: center) {
+  display: flex;
+  width: $w;
+  height: $h;
+  flex-direction: $dir;
+  justify-content: $j-c;
+  align-items: $a-i;
+}
+
+@mixin img($w: 10rem, $h: 10rem) {
+  width: $w;
+  height: $h;
+  object-fit: contain;
+}
+@mixin p($c: #131314, $f-w: 400, $f-s: 1rem) {
+  font-size: $f-s;
+  color: $c;
+  font-weight: $f-w;
+  word-spacing: 1px;
+}
+@mixin button($w: 10rem, $h: 3rem, $c: #fb641b) {
+  width: $w;
+  height: $h;
+  background: $c;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}

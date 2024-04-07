@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProducts } from "../../../Redux/action/admin";
 import toast from "react-hot-toast";
-import { Button } from "@mui/material";
 import Sidebar from "../Sidebar";
-// import Loader from "../../layout/Loader";
 import {
   MdAccountTree,
   MdDescription,
@@ -16,17 +14,7 @@ import { BsSpellcheck } from "react-icons/bs";
 import { FaImages } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AiFillHighlight } from "react-icons/ai";
-import { getDiscount } from "../../product/ProductDetails";
-export const categories = [
-  "Mobiles",
-  "Fashion",
-  "Laptop",
-  "Shoes",
-  "Electronics",
-  "Bags",
-  "Toys",
-  "Camera",
-];
+
 const CreateNewProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,19 +33,29 @@ const CreateNewProduct = () => {
   const [images, setImages] = useState([]);
   const [imagesPrev, setImagesPrev] = useState([]);
   const [disableBtn, setDisableBtn] = useState(false);
-  const [discount, setDiscount] = useState('');
-
+  const [discount, setDiscount] = useState("");
+  const categories = [
+    "Mobile",
+    "Laptop",
+    "Headphone",
+    "Powerbank",
+    "Tshirt",
+    "Jeans",
+    "Shoes",
+    "Kurta",
+    "Saree",
+  ];
   const submitHandler = (e) => {
     e.preventDefault();
     setDisableBtn();
     const myForm = new FormData();
     myForm.append("name", name);
-    myForm.append("cuttedPrice", cuttedPrice);
+    myForm.append("stock", stock);
     myForm.append("price", price);
-    myForm.append("description", description);
     myForm.append("category", category);
     myForm.append("discount", discount);
-    myForm.append("stock", stock);
+    myForm.append("cuttedPrice", cuttedPrice);
+    myForm.append("description", description);
     images.forEach((image) => {
       myForm.append("images", image);
     });
@@ -71,7 +69,6 @@ const CreateNewProduct = () => {
   };
   const changeImageHandler = (e) => {
     const files = Array.from(e.target.files);
-
     setImages([]);
     setImagesPrev([]);
 
@@ -107,7 +104,7 @@ const CreateNewProduct = () => {
   };
   const removeOffers = (index) => {
     setOffers(offers.filter((h, i) => i !== index));
-  }; 
+  };
 
   useEffect(() => {
     if (error) {
@@ -120,6 +117,7 @@ const CreateNewProduct = () => {
       dispatch({ type: "clearMessage" });
       navigate("/admin/dashbord");
     }
+    window.scrollTo(0, 0);
     setImagesPrev([...images]);
   }, [dispatch, error, message, navigate, images]);
 
@@ -128,6 +126,8 @@ const CreateNewProduct = () => {
       <main className="main">
         <Sidebar />
         <div className="product">
+          <h2 className="heading">Dashboard</h2>
+
           <h1>Create Product</h1>
           <form onSubmit={submitHandler} encType="multipart/form-data">
             <div>
@@ -204,7 +204,7 @@ const CreateNewProduct = () => {
               <FaImages />
               <input
                 type="file"
-                name="avatar"
+                name="file"
                 accept="image/*"
                 onChange={changeImageHandler}
                 multiple
@@ -212,7 +212,7 @@ const CreateNewProduct = () => {
             </div>
 
             <div>
-              {imagesPrev.map((image, i) => (
+              {imagesPrev?.map((image, i) => (
                 <div key={i}>
                   <span>
                     <MdOutlineClose />
@@ -229,7 +229,7 @@ const CreateNewProduct = () => {
                 placeholder="Highlight"
                 onChange={(e) => setHighlightInput(e.target.value)}
               />
-              <button onClick={() => addHighlight()}>Add</button>
+              <span onClick={() => addHighlight()}>Add</span>
             </div>
             <div>
               {highlights.map((h, i) => (
@@ -249,7 +249,7 @@ const CreateNewProduct = () => {
                 placeholder="Offers"
                 onChange={(e) => setOffersInput(e.target.value)}
               />
-              <button onClick={() => addOffers()}>Add</button>
+              <span onClick={() => addOffers()}>Add</span>
             </div>
 
             <div>
@@ -274,9 +274,9 @@ const CreateNewProduct = () => {
               ></textarea>
             </div>
 
-            <Button disabled={disableBtn} type="submit">
+            <button disabled={disableBtn} type="submit">
               Create
-            </Button>
+            </button>
           </form>
         </div>
       </main>

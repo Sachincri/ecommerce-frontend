@@ -1,124 +1,138 @@
-@import "colors";
-
-.home {
+.catnav {
   display: flex;
-  width: 100%;
-  min-height: 100vh;
-  // justify-content: center;
-  flex-direction: column;
+  width: 98%;
+  margin: 0.5rem 1rem 1rem 1rem;
+  background: $bg2;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px;
+
+  > section {
+    padding: 1.2rem;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+
+    img {
+      height: 4rem;
+      width: 4rem;
+    }
+
+    > p {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    > div {
+      display: none;
+      position: absolute;
+      background-color: $white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+
+      a {
+        color: black;
+        padding: 8px 10px;
+        text-decoration: none;
+        display: block;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+.home {
+  @include flex(column);
   background: $bg;
 
   > .banner {
-    // display: flex;
-    // height: 14.5rem;
-    // width: 100%;
-    // padding: 1rem;
-    // margin-bottom: 0;
+    height: 14rem;
+    width: 98%;
 
-    // div {
-    //   // display: flex;
-    //   // height: 10rem;
-    //   // align-items: center;
-    //   // justify-content: center;
-    //   border: 1.5px solid rgb(231, 228, 228);
-
-      img {
-        
-        object-fit: contain;
-      }
-    // }
+    img {
+      @include img(100%, 14rem);
+    }
   }
 
-  > section:nth-child(2n) {
+  > .ProductSlider {
     width: 100%;
     border-radius: 2px;
-    padding: 1rem;
+    padding: 0 0.8rem;
+
+    > div {
+      margin: 1rem 0;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 1px 0px;
+    }
+  }
+}
+.slider {
+  background-color: $white;
+
+  > div:first-of-type {
+    @include flex($h: 4rem, $j-c: flex-start);
+
+    > h2 {
+      padding-left: 1rem;
+      font-weight: 400;
+    }
+  }
+
+  > div:last-of-type {
+    > div,
     div {
-      width: 100%;
-      
-      background-color: rgb(255, 255, 255);
+      > a {
+        @include flex(column, 13.2rem, 18rem);
+        border: 1px solid $b1;
+        margin: 1rem 0.2rem;
+        border-radius: 5px;
 
-      > h1 {
-        padding-left: 1rem;
-        font-size: 1.8rem;
-        color: #090920;
-        padding-top: 1rem;
-        font-weight: 200;
-        height: 3rem;
-      }
-      > div {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 1rem;
-
-        > a {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          height: 18rem;
-          width: 13rem;
-          border: 1px solid rgb(202, 27, 27);
-          margin: auto;
-          overflow: hidden;
-          > div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 11rem;
-            img {
-              height: 10rem;
-              width: 10rem;
-              object-fit: contain;
-              &:hover {
-                transform: scale(1.08);
-              }
-            }
+        img {
+          @include img(12rem, 12rem);
+          &:hover {
+            transform: scale(1.03);
           }
+        }
+        > p {
+          margin-top: 1rem;
+          @include p;
+        }
+        > span {
+          font-weight: 600;
+          color: #000;
+          margin-top: 0.3rem;
         }
       }
     }
-    > section {
-      width: 100%;
-      margin:1rem 0 ;
-      background-color: rgb(255, 255, 255);
-      > h1 {
-        padding-left: 1rem;
-        font-size: 1.8rem;
-        color: #868686;
-        padding-top: 1rem;
-        font-weight: 200;
+  }
+}
+
+.RandomProductsSlider {
+  background-color: $white;
+
+  > div:first-of-type {
+    @include flex($h: 4rem, $j-c: flex-start);
+    > h2 {
+      padding-left: 1rem;
+      font-weight: 400;
+    }
+  }
+  > div:last-of-type {
+    > div {
+      .slick-track {
+        display: flex;
+        gap: 0.5rem;
+        margin-left: 0;
       }
       div {
-        display: flex;
-        width: 100%;
-        overflow-x: auto;
+        > section {
+          a {
+            @include flex(column, 13rem, $h: 20rem, $a-i: flex-start);
+            border: 1px solid $b1;
+            margin: 1rem 0.2rem;
+            border-radius: 5px;
+            > img {
+              @include img;
 
-        > a {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          height: 18rem;
-          width: 14rem;
-          border: 1px solid rgb(218, 214, 214);
-          margin: 0.5rem;
-          margin-bottom: 1rem;
-          padding: 1rem;
-          left: 0;
-
-          div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 13rem;
-            width: 13rem;
-            img {
-              height: 11rem;
-              width: 11rem;
-              object-fit: contain;
               &:hover {
-                transform: scale(1.01);
+                transform: scale(1.05);
               }
             }
           }
@@ -128,66 +142,145 @@
   }
 }
 
+.dropdown-content a:hover {
+  background-color: #f5f4f4;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.slick-dots {
+  margin-bottom: 2.4rem;
+}
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next {
+  @include flex($w: 47px, $h: 94px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  background: #fcfcfc;
+  z-index: 1;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: #dbdada;
+}
+.slick-prev {
+  left: 0;
+  border-radius: 0 5px 5px 0;
+}
+.slick-next {
+  right: 0;
+  border-radius: 5px 0 0 5px;
+}
+.slick-prev::before,
+.slick-next::before {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
-  .home {
-    > section:first-child {
-      width: 100%;
-      height: 12rem;
-      margin-top: 0.3rem;
-      border: 1px solid rgb(0, 0, 0);
+  .catnav {
+    margin: 0.2rem;
+    overflow-x: auto;
+    > section {
+      margin: 0.2rem;
+      padding: 0.2rem;
+
+      img {
+        height: 2.8rem;
+        width: 2.8rem;
+      }
+      > p {
+        font-size: 0.7rem;
+        white-space: nowrap;
+      }
       > div {
-        height: 8rem;
-        img {
-          margin-top: 2.5rem;
-        }
+        display: none;
       }
     }
-    > section:nth-child(2n) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 2px;
+  }
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+  .home {
+    > .banner {
+      width: 100%;
       padding: 0;
-      > h1 {
-        padding-left: 0.2rem;
-        font-size: 1.5rem;
+      height: 10rem;
+      img {
+        @include img(100%, 10rem);
+        object-fit: cover;
       }
-      div {
-        width: 97.5%;
-        margin: 0.2rem;
+    }
+    > .ProductSlider {
+      padding: 0;
+      > div {
+        margin: 0.5rem 0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px;
+      }
+    }
+  }
+  .slider {
+    > div:first-of-type {
+      height: 2.5rem;
+      > h2 {
+        padding-top: 0.8rem;
+        padding-left: 0.5rem;
+      }
+    }
+    > div:last-of-type {
+      overflow-x: auto;
+      > div {
+        display: flex;
+        align-items: center;
+        margin-top: 0;
 
-        > div {
-          margin: 0;
-          width: 100%;
+        div {
           > a {
-            height: 15rem;
-            width: 48%;
-            margin: 0.2rem;
+            margin: 1rem 0.2rem;
+            @include flex(column, 9rem, 13rem);
 
             img {
-              height: 12rem;
-              width: 10rem;
+              height: 8rem;
+              width: 8rem;
+
+              &:hover {
+                transform: none;
+              }
+            }
+            > p {
+              margin-top: 0.5rem;
+              text-align: center;
             }
           }
         }
       }
-      > section {
-        margin: 0.2rem;
-        > h1 {
-          padding-left: 0.3rem;
-          font-size: 1.5rem;
-          padding-top: 0.5rem;
-        }
-        div {
+    }
+  }
+  .RandomProductsSlider {
+    > div:first-of-type {
+      height: 2.5rem;
+    }
+    > div:last-of-type {
+      overflow-x: auto;
+      > div {
+        display: flex;
+        > section {
+          > div {
+            svg {
+              display: none;
+            }
+          }
           > a {
-            height: 15rem;
-            width: 11.2rem;
-            margin: 0.2rem;
-            padding: 0.2rem;
+            height: 16rem;
+            width: 11rem;
+            justify-content: space-between;
+            margin: 1rem 0.2rem;
+
             img {
-              height: 10rem;
-              width: 10rem;
+              height: 7rem;
+              width: 7rem;
+
+              &:hover {
+                transform: none;
+              }
             }
           }
         }

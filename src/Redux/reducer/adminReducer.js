@@ -2,7 +2,9 @@ import { createReducer } from "@reduxjs/toolkit";
 
 export const adminReducer = createReducer(
   {
-    users:[],user:{}, products:[]
+    users: [],
+    user: {},
+    products: [],
   },
   {
     getAllUsersRequest: (state) => {

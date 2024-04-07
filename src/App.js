@@ -4,16 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import Shipping from "./component/cart/Shipping";
 import UsersList from "./component/admin/Tables/UsersList";
 import Home from "./component/home/Home";
-import Header from "./component/layout/Header";
 import Profile from "./component/profile/Profile";
-import Dashboard from "./component/admin/Dashboard/Dashboard";
 import Footer from "./component/layout/Footer";
 import Login from "./component/user/Login";
 import SignUp from "./component/user/SignUp";
 import ForgetPassword from "./component/user/ForgetPassword";
 import toast, { Toaster } from "react-hot-toast";
 import { ProtectedRoute } from "protected-route-react";
-import { loadUser } from "./Redux/action/userAction";
+import { loadUser } from "./Redux/action/user";
 import Loader from "./component/layout/Loader";
 import NewProduct from "./component/admin/Product/CreateNewProduct";
 import ProductsPage from "./component/product/ProductsPage";
@@ -26,15 +24,16 @@ import Cart from "./component/cart/Cart";
 import UpdateProduct from "./component/admin/Product/UpdateProduct";
 import UpdateUser from "./component/admin/UpdateUser";
 import OrderDetails from "./component/order/OrderDetails";
-import ConfirmOrder from "./component/cart/ConfirmOrder";
+import OrderSummary from "./component/cart/OrderSummary";
 import Payment from "./component/cart/Payment";
-import OrderSuccess from "./component/cart/OrderSuccess";
 import NotFound from "./component/layout/NotFound";
 import LineChart from "./component/admin/Dashboard/Chart";
 import DoughnutChart from "./component/admin/Dashboard/DoughnutChart";
-import UpdateProfile from "./component/profile/UpdateProfile";
-import "./Styles/app.scss";
+import Search from "./component/layout/Search";
 import OrderStatus from "./component/admin/OrderStatus";
+import Dashboard from "./component/admin/Dashboard/Dashboard";
+import WishList from "./component/profile/WishList";
+import "./Styles/app.scss";
 
 function App() {
   const { isAuthenticated, error, message, user, loading } = useSelector(
@@ -68,25 +67,58 @@ function App() {
         <Loader />
       ) : (
         <>
-          <Header isAuthenticated={isAuthenticated} user={user} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/products/:keyword" element={<ProductsPage />} />
-            <Route path="linechart" element={<LineChart />} />
-            <Route path="/doughnutchart" element={<DoughnutChart />} />
+            <Route path="/products/:category" element={<ProductsPage />} />
+            <Route path="/products/:search" element={<ProductsPage />} />
             <Route
               path="/login"
               element={
                 <ProtectedRoute
                   isAuthenticated={!isAuthenticated}
-                  redirect="/me"
+                  redirect={
+                    user && user.role === "admin" ? "/admin/dashboard" : "/me"
+                  }
                 >
                   <Login />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/shipping"
+              element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                  <Shipping />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/wishlist"
+              element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                  <WishList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/doughnutchart"
+              element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                  <DoughnutChart />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/linechart"
+              element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                  <LineChart />
                 </ProtectedRoute>
               }
             />
@@ -98,14 +130,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/ordersuccess"
-              element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <OrderSuccess />
-                </ProtectedRoute>
-              }
-            />
+
             <Route
               path="/admin/dashboard"
               element={
@@ -223,14 +248,6 @@ function App() {
               }
             />
             <Route
-              path="/me/update"
-              element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <UpdateProfile user={user} />
-                </ProtectedRoute>
-              }
-            />
-            <Route
               path="/orderdetails/:id"
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
@@ -247,10 +264,10 @@ function App() {
               }
             />
             <Route
-              path="/confirmorder"
+              path="/OrderSummary"
               element={
                 <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <ConfirmOrder />
+                  <OrderSummary />
                 </ProtectedRoute>
               }
             />

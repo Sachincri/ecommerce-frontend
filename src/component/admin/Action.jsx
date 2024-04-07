@@ -7,6 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import { Button } from "@mui/material";
+
 const Actions = ({ id, deleteHandler, editRoute }) => {
   const [open, setOpen] = useState(false);
 
@@ -16,7 +17,7 @@ const Actions = ({ id, deleteHandler, editRoute }) => {
 
   return (
     <>
-      <div className="action" >
+      <div className="action">
         {editRoute !== "review" && (
           <Link to={`/admin/${editRoute}/${id}`}>
             <MdModeEdit />

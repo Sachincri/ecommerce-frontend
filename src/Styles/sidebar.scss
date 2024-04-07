@@ -1,62 +1,53 @@
 .side-navbar {
-  background-color: #040422;
   width: 15%;
-  
+  background-color: $white;
+  box-shadow: 0 0 10px 0 rgb(207, 206, 206);
+  > span {
+    display: none;
+  }
   > section {
     display: flex;
-  flex-direction: column;
-justify-content: space-between;
-    > button {
-      color: #040422;
-      border: none;
-      cursor: pointer;
-      display: none;
-      > svg {
-        font-size: 5rem;
-      }
-    }
-    header {
-      display: flex;
-      align-items: center;
-      margin-top: 1.5rem;
-      flex-direction: column;
+    flex-direction: column;
 
+    header {
+      @include flex($j-c: space-between);
+      padding: 1rem;
+      background: $c1;
       img {
-        height: 5rem;
-        width: 5rem;
-        border-radius: 5rem;
-        background-color: #a39e9e;
+        height: 3rem;
+        border-radius: 3rem;
       }
       > p {
         padding-top: 0.5rem;
-        color: #ffffff;
+        color: $white;
       }
     }
     > div {
-      margin-top: 1rem;
       align-items: center;
-      display: flex;
+
+      > h4 {
+        color: $c1;
+        padding: 1rem 2.5rem;
+      }
 
       a {
-        color: rgb(255, 255, 255);
+        color: rgb(117, 115, 115);
         align-items: center;
         display: flex;
-        
-        padding: 1rem;
+        padding: 0.7rem 1rem;
         width: 100%;
-        > p {
-          font-weight: 400;
-        }
-        > svg {
-          color: rgb(165, 0, 0);
-          transition: inherit;
-          font-size: 1.3rem;
-          margin-right: 0.5rem;
+
+        p {
+          font-weight: 500;
+
+          > svg {
+            font-size: 1.5rem;
+            margin-right: 0.7rem;
+          }
         }
         &:hover {
-          border-radius: 2rem 0 0 2rem;
-          background: #ffffff;
-          color: #000;
+          background: $c1;
+          color: $white;
         }
       }
     }
@@ -66,29 +57,14 @@ justify-content: space-between;
   .side-navbar {
     width: 50%;
     position: relative;
-    left: -50%;
-    color: #fff;
-    transition: left 0.3s ease;
+    left: -15rem;
+    color: $white;
     z-index: 1;
     top: 0;
-    // bottom: 0;
-
-    &.open {
-      left: 0;
-    }
-    section {
-      margin-top: -1rem;
-      > button {
-        margin-left: 12.2rem;
-        > svg {
-          font-size: 5rem;
-        }
-      }
-      // margin-top: -4rem;
-      height: 100vh;
-      position: sticky;
-      top: 3rem;
-      bottom: 0rem;
+    > span {
+      display: flex;
+      margin-top: 0.8rem;
+      margin-left: 15rem;
     }
   }
 }

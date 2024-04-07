@@ -32,6 +32,7 @@ const Dashboard = () => {
     dispatch(getAdminProducts());
     dispatch(getAllOrders());
     dispatch(getAllUsers());
+    window.scrollTo(0, 0);
   }, [dispatch]);
 
   return (
@@ -41,10 +42,10 @@ const Dashboard = () => {
         <Loader />
       ) : (
         <>
-          <Sidebar />
+          <Sidebar />   
         <section> 
           <section>
-            <h2>Dashboard</h2>
+            <h2 className="heading">Dashboard</h2>
             <div>
               <div>
                 {" "}

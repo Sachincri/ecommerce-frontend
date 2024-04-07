@@ -29,31 +29,6 @@ export const updateProfile = (name, email) => async (dispatch) => {
   }
 };
 
-export const updateProfilePicture = (formdata) => async (dispatch) => {
-  try {
-    dispatch({ type: "updateProfilePictureRequest" });
-    const config = {
-      headers: {
-        "Content-type": "multipart/form-data",
-      },
-
-      withCredentials: true,
-    };
-    const { data } = await axios.put(
-      `${server}/updateprofilepicture`,
-      formdata,
-      config
-    );
-
-    dispatch({ type: "updateProfilePictureSuccess", payload: data.message });
-  } catch (error) {
-    dispatch({
-      type: "updateProfilePictureFail",
-      payload: error.response.data.message,
-    });
-  }
-};
-
 export const changePassword =
   (oldPassword, newPassword) => async (dispatch) => {
     try {
@@ -112,7 +87,64 @@ export const forgetPassword = (email) => async (dispatch) => {
     });
   }
 };
+export const addToWishList = (productId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "addToWishListRequest",
+    });
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
 
+      withCredentials: true,
+    };
+    const { data } = await axios.put(
+      `${server}/addToWishList`,
+      { productId },
+      config
+    );
+
+    dispatch({
+      type: "addToWishListSuccess",
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: "addToWishListtFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+export const recentlyViewedProduct = (productId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "recentlyViewedRequest",
+    });
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+
+      withCredentials: true,
+    };
+    const { data } = await axios.post(
+      `${server}/recentlyViewed`,
+      { productId },
+      config
+    );
+
+    dispatch({
+      type: "recentlyViewedSuccess",
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: "removeToWishListFail",
+      payload: error.response.data.message,
+    });
+  }
+};
 export const resetPassword = (token, password) => async (dispatch) => {
   try {
     dispatch({ type: "resetPasswordRequest" });
@@ -140,5 +172,3 @@ export const resetPassword = (token, password) => async (dispatch) => {
     });
   }
 };
-
-

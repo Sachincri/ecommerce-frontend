@@ -1,0 +1,174 @@
+.wishist {
+  width: 100%;
+  height: 100vh;
+
+  > h2 {
+    padding: 1rem;
+    font-weight: 400;
+  }
+}
+.wishlist_sec_1 {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+
+.wishist_card {
+  width: 14rem;
+  height: 22rem;
+  border: 1px solid $b1;
+  border-radius: 4px;
+  background: $bg2;
+  > div {
+    position: relative;
+    color: #dddada;
+    cursor: pointer;
+
+    > svg {
+      position: absolute;
+      top: 1.2rem;
+      left: 88%;
+    }
+  }
+}
+
+.wishist_1 {
+  @include flex($h: 12rem);
+
+  img {
+    @include img(12rem, 10rem);
+  }
+}
+.wishist_2 {
+  padding: 0.5rem;
+  .mobile {
+    display: none;
+  }
+
+  P {
+    color: #0e1020;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    > p:first-of-type {
+      @include flex($h: 1.2rem, $w: 2.8rem);
+      background: #1b7a1b;
+      border-radius: 5px;
+      color: $white;
+      font-size: 0.8rem;
+
+      > svg {
+        margin-left: 0.2rem;
+        color: $white;
+      }
+    }
+    > p:last-of-type {
+      color: #a8a8a8;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 0rem 0.5rem 0.3rem;
+    }
+  }
+}
+.wishist_3 {
+  padding: 0.5rem;
+  margin-top: -1rem;
+  div {
+    display: flex;
+    > h3 {
+      color: #01010ccb;
+      font-size: 1.1rem;
+    }
+    > p {
+      margin-bottom: 0.3rem;
+      color: #b5b8b6;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 0.4rem;
+      text-decoration: line-through;
+    }
+    > span {
+      color: #008817;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 0.4rem;
+    }
+  }
+  > span {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #31a30e;
+  }
+}
+
+.viewed_sec_2 {
+  padding: 1rem 0;
+  .slick-track {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 0;
+  }
+}
+
+.viewed_sec_1 {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  > h2 {
+    padding-left: 0.5rem;
+    font-weight: 400;
+  }
+}
+.viewed {
+  width: 100%;
+  background: $bg2;
+}
+@media screen and (max-width: 600px) {
+  .wishist {
+    .wishlist_sec_1 {
+      padding: 0;
+    }
+  }
+  .wishist_card {
+    margin: 0.5rem 0.2rem;
+    height: 18rem;
+    width: 12rem;
+  }
+  .wishist_1 {
+    @include flex($h: 10rem);
+
+    img {
+      @include img(8rem, 8rem);
+    }
+  }
+  .wishist_2 {
+    padding: 0.5rem;
+    .mobile {
+      display: flex;
+      padding: 0.5rem 0;
+    }
+
+    P {
+      display: none;
+    }
+  }
+  .wishist_3 {
+    padding: 0.2rem 0.5rem;
+  }
+
+  .viewed_sec_2 {
+    width: 100%;
+    padding: 0.5rem 0;
+
+    > div {
+      overflow-x: auto;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

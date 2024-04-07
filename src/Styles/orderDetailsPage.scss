@@ -1,44 +1,32 @@
 .orderDetailsPage {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex(column);
   background: $bg;
 
   > h3 {
-    display: flex;
-    width: 100%;
-    height: 4rem;
+    @include flex($j-c: flex-start, $h: 4rem);
     padding-left: 2rem;
-    align-items: center;
     color: #afabab;
     font-weight: 400;
-    background: #ffffff;
+    background: $bg2;
     box-shadow: 0 0 5px 0 rgb(153, 153, 153);
   }
-
+  .order_Details_head {
+    @include flex($j-c: flex-start, $h: 3.2rem);
+    font-weight: 400;
+    padding-left: 2rem;
+    color: rgb(153, 153, 153);
+    border-bottom: 1px solid $b1;
+  }
   > .order_item {
-    background: #ffffff;
+    background: $bg2;
     margin-top: 1rem;
     width: 90%;
     box-shadow: 0 0 5px 0 rgb(190, 190, 209);
 
-    > h2 {
-      display: flex;
-      align-items: center;
-      font-weight: 400;
-      height: 3.5rem;
-      padding-left: 2rem;
-      color: rgb(153, 153, 153);
-      border-bottom: 1px solid rgb(211, 205, 205);
-    }
     > div {
-      display: flex;
-      height: 14rem;
-      justify-content: flex-end;
-      align-items: center;
+      @include flex($j-c: flex-end, $h: 14rem);
       border-bottom: 1px solid rgb(211, 205, 205);
+
       > p {
         > span {
           margin-right: 8rem;
@@ -52,34 +40,22 @@
         }
       }
       > img {
-        height: 12rem;
-        width: 12rem;
-        object-fit: contain;
+        @include img(12rem, 12rem);
         margin-right: 4rem;
         padding-right: 2rem;
       }
     }
   }
   > .status {
-    height: 10rem;
     width: 90%;
     margin-top: 1rem;
-    background: #ffffff;
+    background: $bg2;
     box-shadow: 0 0 5px 0 rgb(190, 190, 209);
-    > h2 {
-      display: flex;
-      align-items: center;
-      font-weight: 400;
-      height: 3.5rem;
-      padding-left: 2rem;
-      color: rgb(153, 153, 153);
-      border-bottom: 1px solid rgb(211, 205, 205);
-    }
+
     div {
-      display: flex;
-      align-items: center;
       padding: 2rem;
-      justify-content: space-between;
+      @include flex($j-c: space-between, $h: 4rem);
+
       > p {
         font-size: 2rem;
         font-weight: 400;
@@ -91,33 +67,16 @@
           text-align: center;
         }
         button {
-          width: 6rem;
-          height: 3rem;
-          background: #28e40f;
+          @include button;
         }
       }
     }
   }
   > .order_status {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 12rem;
-    background: #ffffff;
+    @include flex(column, $j-c: space-between, $h: 12rem, $w: 90%);
+    background: $bg2;
     margin-top: 1rem;
     box-shadow: 0 0 5px 0 rgb(190, 190, 209);
-
-    > h2 {
-      display: flex;
-      align-items: center;
-      font-weight: 400;
-      height: 3.5rem;
-      width: 100%;
-      padding-left: 2rem;
-      color: rgb(153, 153, 153);
-      border-bottom: 1px solid rgb(209, 205, 205);
-    }
 
     > div {
       padding: 2rem;
@@ -127,19 +86,10 @@
   > .shipping_info {
     width: 90%;
     height: 12rem;
-    background: #ffffff;
+    background: $bg2;
     margin-top: 1rem;
     box-shadow: 0 0 5px 0 rgb(190, 190, 209);
 
-    > h2 {
-      display: flex;
-      align-items: center;
-      font-weight: 400;
-      height: 3.5rem;
-      padding-left: 2rem;
-      color: rgb(153, 153, 153);
-      border-bottom: 1px solid rgb(211, 205, 205);
-    }
     > div {
       margin: 0.2rem;
       > div {
@@ -159,19 +109,10 @@
     width: 90%;
     height: 15rem;
     margin-top: 1rem;
-    background: #ffffff;
+    background: $bg2;
     box-shadow: 0 0 5px 0 rgb(190, 190, 209);
-    > h2 {
-      display: flex;
-      align-items: center;
-      font-weight: 400;
-      height: 3.5rem;
-      padding-left: 2rem;
-      color: rgb(153, 153, 153);
-      border-bottom: 1px solid rgb(211, 205, 205);
-    }
+
     > p {
-      // margin: 2rem;
       > div {
         display: flex;
         margin: 1.3rem;
@@ -180,31 +121,51 @@
     }
   }
   > .payment {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 5rem;
-    background: #ffffff;
+    @include flex($j-c: space-between, $h: 4rem);
+    background: $bg2;
     margin-top: 1rem;
     padding: 2rem;
     box-shadow: 0 0 5px 0 rgb(190, 190, 209);
-    justify-content: space-between;
   }
 }
 
 @media screen and (max-width: 600px) {
   .orderDetailsPage {
     > h3 {
-      padding-left: 0.2rem;
+      padding-left: 0.5rem;
       font-size: 1rem;
     }
-
+    > .status {
+      width: 100%;
+      margin-top: 0.5rem;
+      > div {
+        display: flex;
+        padding: 1rem 0.5rem;
+        height: fit-content;
+        > p {
+          display: none;
+        }
+        > form {
+          width: 100%;
+          > select {
+            width: 100%;
+          }
+          button {
+            margin-top: 0.5rem;
+            @include button($w: 100%);
+          }
+        }
+      }
+    }
+    .order_Details_head {
+      @include flex($j-c: flex-start, $h: 3.2rem);
+      font-weight: 400;
+      padding-left: 0.5rem;
+    }
     > .order_item {
       width: 100%;
       margin-top: 0.5rem;
-      > h2 {
-        padding: 0.4rem;
-      }
+
       > div {
         height: 10rem;
         > p {
@@ -220,40 +181,29 @@
             margin-left: 0.5rem;
           }
         }
+
         > img {
-          height: 10rem;
-          width: 9rem;
+          @include img(8rem, 8rem);
+
           margin-right: 0.4rem;
           padding-right: 0rem;
         }
       }
     }
     > .order_status {
+      @include flex(column, $a-i: flex-start);
       margin-top: 0.5rem;
       padding: 0.4rem;
-      width: 100%;
-      height: 18rem;
-      align-items: start;
-      flex-direction: column;
 
-      > h2 {
-        width: 100%;
-        padding: 0.3rem;
-        border-bottom: 1px solid gainsboro;
-      }
       > div {
-        margin-top: -1.5rem;
-        padding-left: 1rem;
+        padding: 1rem;
       }
     }
 
     > .shipping_info {
       width: 100%;
       margin-top: 0.5rem;
-      > h2 {
-        padding-top: 1rem;
-        padding-left: 0.5rem;
-      }
+
       > div {
         > div {
           padding-left: 0.2rem;
@@ -263,12 +213,6 @@
     > .order_summery {
       margin-top: 0.5rem;
       width: 100%;
-      > h2 {
-        padding-left: 0.6rem;
-      }
-      > p {
-        margin: -0.3rem;
-      }
     }
     > .payment {
       margin-top: 0.5rem;

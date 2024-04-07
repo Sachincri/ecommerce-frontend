@@ -7,7 +7,6 @@ export const createOrder =
     orderItems,
     paymentMethod,
     itemsPrice,
-    taxPrice,
     shippingCharges,
     totalAmount
   ) =>
@@ -24,7 +23,6 @@ export const createOrder =
           orderItems,
           paymentMethod,
           itemsPrice,
-          taxPrice,
           shippingCharges,
           totalAmount,
         },
@@ -84,26 +82,33 @@ export const paymentVerification =
     }
   };
 
-export const getMyOrder = () => async (dispatch) => {
-  try {
-    dispatch({
-      type: "getMyOrdersRequest",
-    });
-    const { data } = await axios.get(`${server}/orders/me`, {
-      withCredentials: true,
-    });
-    // console.log(data);
-    dispatch({
-      type: "getMyOrdersSuccess",
-      payload: data.orders,
-    });
-  } catch (error) {
-    dispatch({
-      type: "getMyOrdersFail",
-      payload: error.response.data.message,
-    });
-  }
-};
+export const getMyOrder =
+  (search = "", orderStatus) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: "getMyOrdersRequest",
+      });
+
+      let api = `${server}/orders/me?search=${search}`;
+      if (orderStatus) {
+        api = `${server}/orders/me?search=${search}&orderStatus=${orderStatus}`;
+      }
+      const { data } = await axios.get(api, {
+        withCredentials: true,
+      });
+
+      dispatch({
+        type: "getMyOrdersSuccess",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "getMyOrdersFail",
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 export const getOrderDetails = (id) => async (dispatch) => {
   try {

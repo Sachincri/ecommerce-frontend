@@ -1,37 +1,34 @@
 import React from "react";
-import {
-  MdLocalShipping,
-  MdAccountBalanceWallet,
-  MdLibraryAddCheck,
-} from "react-icons/md";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 const CheckoutSteps = ({ activeStep }) => {
   const steps = [
     {
-      label: <Typography>Shipping Details</Typography>,
-      icon: <MdLocalShipping />,
+      label: 'Shipping',
     },
     {
-      label: <Typography>Confirm Order</Typography>,
-      icon: <MdLibraryAddCheck />,
+      label: 'OrderSummary',
     },
     {
-      label: <Typography>Payment</Typography>,
-      icon: <MdAccountBalanceWallet />,
+      label: 'Payment',
     },
   ];
 
   const stepStyles = {
     boxSizing: "border-box",
-  }; 
+  };
 
   return (
     <main className="CheckoutSteps">
-      <Stepper alternativeLabel activeStep={activeStep} style={stepStyles}>
+      <Stepper
+        alternativeLabel
+        activeStep={activeStep}
+        style={stepStyles}
+        sx={{p:2,width:'100%'}}
+      >
         {steps.map((item, index) => (
           <Step
             key={index}
@@ -44,7 +41,7 @@ const CheckoutSteps = ({ activeStep }) => {
               }}
               icon={item.icon}
             >
-              {item.label}
+              <Box >{item.label}</Box>
             </StepLabel>
           </Step>
         ))}

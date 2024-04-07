@@ -8,7 +8,7 @@ const ReviewCard = ({ review }) => {
           {review.rating}
           <AiFillStar />
         </span>
-        {review.name}{" "}
+        {review.name}
       </p>
       <article>{review.comment}</article>
     </div>

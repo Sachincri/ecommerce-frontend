@@ -1,77 +1,64 @@
-import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import toast from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
-import { changePassword } from '../../Redux/action/profile';
-import Loader from '../layout/Loader';
+import React, { useState } from "react";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { changePassword } from "../../Redux/action/profile";
+import Loader from "../layout/Loader";
+
 const ChangePassword = () => {
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
 
   const dispatch = useDispatch();
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
     dispatch(changePassword(oldPassword, newPassword));
   };
 
-  const { loading, message, error } = useSelector(state => state.profile);
+  const { loading, message, error } = useSelector((state) => state.profile);
 
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch({ type: 'clearError' });
+      dispatch({ type: "clearError" });
     }
     if (message) {
       toast.success(message);
-      dispatch({ type: 'clearMessage' });
+      dispatch({ type: "clearMessage" });
     }
   }, [dispatch, error, message]);
 
   return (
-    <Container py="16" minH={'90vh'}>
-    {loading ? (
-            <Loader />
-          ) : (
-      <form onSubmit={submitHandler}>
-        <Heading
-          textTransform={'uppercase'}
-          children="Change Password"
-          my="16"
-          textAlign={['center', 'left']}
-        />
+    <main>
+      {loading ? (
+        <Loader />
+      ) : (
+        <form onSubmit={submitHandler}>
+          <h1>Change Password</h1>
 
-        <VStack spacing={'8'}>
-          <Input
-            required
-            value={oldPassword}
-            onChange={e => setOldPassword(e.target.value)}
-            placeholder="Old Password"
-            type={'password'}
-            focusBorderColor="yellow.500"
-          />
+          <div spacing={"8"}>
+            <input
+              required
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
+              placeholder="Old Password"
+              type={"password"}
+            />
 
-          <Input
-            required
-            value={newPassword}
-            onChange={e => setNewPassword(e.target.value)}
-            placeholder="New Password"
-            type={'password'}
-            focusBorderColor="yellow.500"
-          />
+            <input
+              required
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="New Password"
+              type={"password"}
+            />
 
-          <Button
-            isLoading={loading}
-            w="full"
-            colorScheme={'yellow'}
-            type="submit"
-          >
-            Change
-          </Button>
-        </VStack>
-      </form>
-          )};
-    </Container>
+            <button isLoading={loading}>Change</button>
+          </div>
+        </form>
+      )}
+      ;
+    </main>
   );
 };
 

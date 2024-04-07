@@ -41,7 +41,7 @@ const TrackStepper = ({
   );
   const pendingIcon = (
     <span>
-      <BsCircle  />
+      <BsCircle />
     </span>
   );
   useEffect(() => {
@@ -50,9 +50,9 @@ const TrackStepper = ({
     }
   }, []);
   return (
-    <Box  >
+    <Box>
       {mobile ? (
-        <Stepper activeStep={activeStep} sx={{ width: 1000}} alternativeLabel>
+        <Stepper activeStep={activeStep} sx={{ width: 1000 }} alternativeLabel>
           {steps.map((item, index) => (
             <Step
               key={index}
@@ -88,7 +88,7 @@ const TrackStepper = ({
                 {activeStep >= index ? (
                   <div>
                     <span>{item.status}</span>
-                   <span> {item.dt && item.dt}</span>
+                    <span> {item.dt && item.dt}</span>
                   </div>
                 ) : (
                   <span>{item.status}</span>

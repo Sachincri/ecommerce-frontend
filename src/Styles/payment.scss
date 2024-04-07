@@ -1,0 +1,58 @@
+.confirmOrder {
+  background-color: white;
+  width: 100%;
+  padding: 2rem 3.5rem;
+
+  > h1 {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 3rem;
+    font: 100 3rem;
+    display: none;
+  }
+
+  > form {
+    @include flex(column);
+
+    > div {
+      @include flex($j-c: space-between);
+      background-color: rgb(233, 233, 233);
+      margin: 1rem;
+      border-radius: 5px;
+      padding: 1rem;
+    }
+    .button {
+      @include flex($j-c: flex-end);
+      background: $bg2;
+      margin-top: 1rem;
+      padding: 0.6rem;
+
+      > button {
+        @include button;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .confirmOrder {
+    h1 {
+      display: flex;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+    form {
+      > div {
+        width: 100%;
+      }
+      .button {
+        padding: 0;
+
+        > button {
+          @include button($w: 100%);
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

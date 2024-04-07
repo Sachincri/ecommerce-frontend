@@ -37,7 +37,7 @@ const DoughnutChart = () => {
     ],
   };
   return (
-    <div>
+    <div className="charts">
       <Doughnut data={data} />
     </div>
   );

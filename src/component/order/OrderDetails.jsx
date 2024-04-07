@@ -5,6 +5,7 @@ import { getOrderDetails } from "../../Redux/action/order";
 import { toast } from "react-hot-toast";
 import Loader from "../layout/Loader";
 import TrackStepper from "../order/TrackStepper";
+import Header from "../layout/Header";
 
 const OrderDetails = () => {
   const { order, error, loading } = useSelector((state) => state.orders);
@@ -22,54 +23,54 @@ const OrderDetails = () => {
 
   return (
     <>
+      <Header />
       {loading ? (
         <Loader />
       ) : (
         <main className="orderDetailsPage">
           <h3>Order ID - {order._id}</h3>
-            <section className="order_item" >
-              <h2>Order Item</h2>
-              {order.orderItems &&
-                order.orderItems.map((item) => (
-                  <div key={item.product}>
-                    <p>
-                      <Link to={`/product/${item.product}`}>
-                        {item.name.length > 70
-                          ? `${item.name.substring(0, 70)}...`
-                          : item.name}
-                      </Link>
-                      <span>₹{item.price}</span>
-                    </p>
-                    <img src={item.image} alt="Product" />
-                  </div>
-                ))}
-            </section>
-            <section className="order_status">
-              <h2>Order Status</h2>
-              <div>
-                <TrackStepper
-                  orderOn={order.createdAt}
-                  processingAt={order.processingAt}
-                  shippedAt={order.shippedAt}
-                  deliveredAt={order.deliveredAt}
-                  activeStep={
-                    order.orderStatus === "Delivered"
-                      ? 3
-                      : order.orderStatus === "Shipped"
-                      ? 2
-                      : order.orderStatus === "Processing"
-                      ? 1
-                      : 0
-                  }
-                />
+          <section className="order_item">
+            <h2 className="order_Details_head">Order Item</h2>
+            {order.orderItems?.map((item) => (
+              <div key={item.product}>
+                <p>
+                  <Link to={`/product/${item.product}`}>
+                    {item.name.length > 70
+                      ? `${item.name.substring(0, 70)}...`
+                      : item.name}
+                  </Link>
+                  <span>₹{item.price}</span>
+                </p>
+                <img src={item.image} alt="Product" />
               </div>
-            </section>
+            ))}
+          </section>
+          <section className="order_status">
+            <h2 className="order_Details_head">Order Status</h2>
+            <div>
+              <TrackStepper
+                orderOn={order.createdAt}
+                processingAt={order.processingAt}
+                shippedAt={order.shippedAt}
+                deliveredAt={order.deliveredAt}
+                activeStep={
+                  order.orderStatus === "Delivered"
+                    ? 3
+                    : order.orderStatus === "Shipped"
+                    ? 2
+                    : order.orderStatus === "Processing"
+                    ? 1
+                    : 0
+                }
+              />
+            </div>
+          </section>
 
           <section className="shipping_info">
-            <h2>Shipping Info</h2>
+            <h2 className="order_Details_head">Shipping Info</h2>
             <div>
               <div>
-                <p>Name :</p>
+                <p>Name</p>
                 <span>{order.user && order.user.name}</span>
               </div>
               <div>
@@ -77,7 +78,7 @@ const OrderDetails = () => {
                 <span> {order.shippingInfo && order.shippingInfo.phoneNo}</span>
               </div>
               <div>
-                <p>Address :</p>
+                <p>Address</p>
                 <span>
                   {order.shippingInfo &&
                     `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
@@ -86,7 +87,7 @@ const OrderDetails = () => {
             </div>
           </section>
           <section className="order_summery">
-            <h2>Order Summery</h2>
+            <h2 className="order_Details_head">Order Summery</h2>
             <p>
               <div>
                 <p>Subtotal</p>
@@ -96,6 +97,7 @@ const OrderDetails = () => {
                 <p>Shipping Charges</p>
                 <span>₹{order.shippingCharges}</span>
               </div>
+
               <div>
                 <b>Total</b>
 

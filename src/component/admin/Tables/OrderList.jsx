@@ -25,6 +25,7 @@ const OrderList = () => {
       dispatch({ type: "clearMessage" });
     }
     dispatch(getAllOrders());
+    window.scrollTo(0, 0);
   }, [dispatch, error, message]);
 
   const deleteOrderHandler = (id) => {
@@ -153,6 +154,8 @@ const OrderList = () => {
           <Loader />
         ) : (
           <div>
+            <h2 className="heading">Dashboard</h2>
+
             <h1>Manage Orders</h1>
             <Box sx={{ height: "100%", width: "100%" }}>
               <DataGrid

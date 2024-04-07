@@ -3,68 +3,98 @@ import {
   RiDashboardFill,
   RiShoppingBag3Fill,
   RiCloseFill,
+  RiHome4Line,
 } from "react-icons/ri";
-import { BiMenuAltLeft } from "react-icons/bi";
+import { BiDoughnutChart } from "react-icons/bi";
 import { TfiWrite } from "react-icons/tfi";
 import { FiUsers } from "react-icons/fi";
 import { GiClothes } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import DrawerComponent from "../layout/Drower";
+import { IoBarChartOutline } from "react-icons/io5";
+import { MdPieChart } from "react-icons/md";
 
 const Sidebar = () => {
   const { user } = useSelector((state) => state.user);
 
-  const [isOpen, setIsOpen] = useState(false);
-
   const nav = [
+    {
+      path: "/",
+      icon: <RiHome4Line />,
+      name: "Home",
+    },
     {
       path: "/admin/dashboard",
       icon: <RiDashboardFill />,
-      title: "Dashboard",
+      name: "Dashboard",
     },
     {
       path: "/admin/newproduct",
       icon: <TfiWrite />,
-      title: "CreateProduct",
+      name: "CreateProduct",
     },
     {
       path: "/admin/productlist",
       icon: <GiClothes />,
-      title: "Products",
+      name: "Products",
     },
     {
       path: "/admin/userslist",
       icon: <FiUsers />,
-      title: "Users",
+      name: "Users",
     },
     {
       path: "/admin/orderslist",
       icon: <RiShoppingBag3Fill />,
-      title: "Orders",
+      name: "Orders",
     },
   ];
   return (
     <>
-      <main className={`side-navbar ${isOpen ? "open" : ""}`}>
+      <main className={"side-navbar"}>
+        <span>
+          <DrawerComponent listArray={nav} />
+        </span>
         <section>
-          {" "}
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <RiCloseFill /> : <BiMenuAltLeft />}
-          </button>
           <header>
-            <img src={user.avatar.url} alt="img" />
+            {" "}
             <p>{user.name}</p>
+            <img
+              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/logo_lite-cbb357.png"
+              alt="img"
+            />
           </header>
           {nav?.map((item, i) => (
             <div key={i}>
               <Link to={item.path}>
-                <p>
-                  {item.icon} {item.title}
-                </p>
+                <p>{item.icon}</p> <p>{item.name}</p>
               </Link>
             </div>
           ))}
-          <div></div>
+          <div>
+            <h4>ALL CHARTS</h4>
+            <div>
+              <Link to={"/linechart"}>
+                <p>
+                  <IoBarChartOutline />
+                </p>
+                <p>Income Chart</p>
+              </Link>
+              <Link to={"/doughnutchart"}>
+                <p>
+                  <BiDoughnutChart />
+                </p>
+                <p> Products Chart</p>
+              </Link>
+              <Link>
+                <p>
+                  <MdPieChart />
+                </p>
+                <p>Orders Charts</p>
+              </Link>
+            </div>
+          </div>
         </section>
       </main>
     </>

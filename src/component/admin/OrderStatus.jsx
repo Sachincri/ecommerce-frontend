@@ -40,6 +40,7 @@ const OrderStatus = () => {
       dispatch({ type: "clearMessage" });
       navigate("/admin/dashboard");
     }
+    window.scrollTo(0, 0);
   }, [dispatch, message, navigate, error, orderId, order]);
 
   return (
@@ -49,74 +50,74 @@ const OrderStatus = () => {
       ) : (
         <main className="orderDetailsPage">
           <h3>Order ID - {order._id}</h3>
-            <section className="order_item" >
-              <h2>Order Item</h2>
-              {order.orderItems &&
-                order.orderItems.map((item) => (
-                  <div key={item.product}>
-                    <p>
-                      <Link to={`/product/${item.product}`}>
-                        {item.name.length > 70
-                          ? `${item.name.substring(0, 70)}...`
-                          : item.name}
-                      </Link>
-                      <span>₹{item.price}</span>
-                    </p>
-                    <img src={item.image} alt="Product" />
-                  </div>
-                ))}
-            </section>
-            <section className="status">
-            <h2>Change Status</h2>
+          <section className="order_item">
+            <h2 className="order_Details_head">Order Item</h2>
+            {order.orderItems &&
+              order.orderItems.map((item) => (
+                <div key={item.product}>
+                  <p>
+                    <Link to={`/product/${item.product}`}>
+                      {item.name.length > 70
+                        ? `${item.name.substring(0, 70)}...`
+                        : item.name}
+                    </Link>
+                    <span>₹{item.price}</span>
+                  </p>
+                  <img src={item.image} alt="Product" />
+                </div>
+              ))}
+          </section>
+          <section className="status">
+            <h2 className="order_Details_head">Change Status</h2>
             <div>
-            <p>{order.orderStatus}</p>
-            <form onSubmit={updateOrderSubmitHandler}>
-              <select
-                value={status}
-                label="Status"
-                onChange={(e) => setStatus(e.target.value)}
-              >
-                <option value="">Change Status</option>
-                {order.orderStatus === "Ordered" && (
-                  <option value="Processing">Processing</option>
-                )}
-                {order.orderStatus === "Processing" && (
-                  <option value="Shipped">Shipped</option>
-                )}
+              <p>{order.orderStatus}</p>
+              <form onSubmit={updateOrderSubmitHandler}>
+                <select
+                  value={status}
+                  label="Status"
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option value="">Change Status</option>
+                  {order.orderStatus === "Ordered" && (
+                    <option value="Processing">Processing</option>
+                  )}
+                  {order.orderStatus === "Processing" && (
+                    <option value="Shipped">Shipped</option>
+                  )}
 
-                {order.orderStatus === "Shipped" && (
-                  <option value="Delivered">Delivered</option>
-                )}
-                <option value="OrderCancel">OrderCancel</option>
-              </select>
+                  {order.orderStatus === "Shipped" && (
+                    <option value="Delivered">Delivered</option>
+                  )}
+                  <option value="OrderCancel">OrderCancel</option>
+                </select>
 
-              <button type="submit">Update</button>
-            </form>
+                <button type="submit">Update</button>
+              </form>
             </div>
-            </section>
-            <section className="order_status">
-              <h2>Order Status</h2>
-              <div>
-                <TrackStepper
-                  orderOn={order.createdAt}
-                  processingAt={order.processingAt}
-                  shippedAt={order.shippedAt}
-                  deliveredAt={order.deliveredAt}
-                  activeStep={
-                    order.orderStatus === "Delivered"
-                      ? 3
-                      : order.orderStatus === "Shipped"
-                      ? 2
-                      : order.orderStatus === "Processing"
-                      ? 1
-                      : 0
-                  }
-                />
-              </div>
-            </section>
+          </section>
+          <section className="order_status">
+            <h2 className="order_Details_head">Order Status</h2>
+            <div>
+              <TrackStepper
+                orderOn={order.createdAt}
+                processingAt={order.processingAt}
+                shippedAt={order.shippedAt}
+                deliveredAt={order.deliveredAt}
+                activeStep={
+                  order.orderStatus === "Delivered"
+                    ? 3
+                    : order.orderStatus === "Shipped"
+                    ? 2
+                    : order.orderStatus === "Processing"
+                    ? 1
+                    : 0
+                }
+              />
+            </div>
+          </section>
 
           <section className="shipping_info">
-            <h2>Shipping Info</h2>
+            <h2 className="order_Details_head">Shipping Info</h2>
             <div>
               <div>
                 <p>Name :</p>
@@ -136,7 +137,7 @@ const OrderStatus = () => {
             </div>
           </section>
           <section className="order_summery">
-            <h2>Order Summery</h2>
+            <h2 className="order_Details_head">Order Summery</h2>
             <p>
               <div>
                 <p>Subtotal</p>

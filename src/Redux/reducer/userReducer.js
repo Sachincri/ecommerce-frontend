@@ -65,8 +65,6 @@ export const userReducer = createReducer(
 
     clearMessage: (state) => {
       state.message = null;
-    }
+    },
   }
 );
-
-

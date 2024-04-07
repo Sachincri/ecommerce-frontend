@@ -2,19 +2,19 @@
   a {
     > svg {
       margin-right: 2.5rem;
-      color: #1c1f36;
+      color: $text1;
       font-size: 1.3rem;
     }
   }
 
   > button {
-    background: #ffffff;
+    background: $bg2;
     margin-right: 1rem;
     border: none;
 
     > svg {
-        color: #eb0000;
-        font-size: 1.3rem;
-      }
+      color: #eb0000;
+      font-size: 1.3rem;
+    }
   }
 }

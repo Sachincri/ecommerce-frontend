@@ -1,89 +1,112 @@
 @import "colors";
 
 .profile {
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  > section:first-child {
-    display: flex;
-    width: 40vw;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  @include flex($h: 100vh, $a-i: flex-start);
+  background: $bg;
 
-    > div {
-      display: flex;
-      height: 20.5rem;
-      width: 20.5rem;
-      border-radius: 20.5rem;
-      align-items: center;
-      justify-content: center;
-      background: #2874f0;
+  > section:first-of-type {
+    display: flex;
+    width: 20rem;
+    margin: 1rem;
+    margin-right: 0;
+    flex-direction: column;
+
+    > div:first-of-type {
+      @include flex($h: 5rem, $j-c: flex-start);
+      margin-right: 0;
+      background: $bg2;
+      box-shadow: 0 0 6px 0 rgb(190, 190, 209);
 
       > img {
-        height: 20rem;
-        width: 20rem;
-        border-radius: 25rem;
-        object-fit: contain;
-        background-color: white;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.146);
+        @include img(3rem, 3rem);
+        border-radius: 2rem;
+        margin: 0 1.6rem;
+      }
+      > div {
+        > span {
+          font-size: 0.7rem;
+        }
+        > div {
+          display: flex;
+          > p {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+    > div:last-of-type {
+      display: flex;
+      height: fit-content;
+      margin-top: 1rem;
+      flex-direction: column;
+      box-shadow: 0 0 6px 0 rgb(190, 190, 209);
+
+      > a {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgb(219, 216, 216);
+        font-size: 1rem;
+        height: 4rem;
+        color: #7a7a7a;
+        font-weight: 500;
+        background: $bg2;
+        > svg {
+          font-size: 1.4rem;
+          margin: 0 1.5rem;
+          color: $c1;
+        }
       }
     }
     > button {
-      display: flex;
-      height: 1.5rem;
-      width: 1.5rem;
+      @include flex($j-c: flex-start, $h: 4rem);
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #7e7c7c;
+      font-weight: 500;
+      background: $bg2;
       border: none;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      background: rgb(7, 3, 36);
-      border-radius: 1.5rem;
-      transform: translate(5rem, -2.1rem);
+      box-shadow: 0 0 6px 0 rgb(190, 190, 209);
+
+      > svg {
+        font-size: 1.4rem;
+        margin: 0 1.5rem;
+        color: $c1;
+      }
     }
   }
-  > section:nth-child(2n) {
-    display: flex;
-    width: 50vw;
-    padding-left: 8rem;
-    border-left: 3px solid #2874f0;
-    flex-direction: column;
+  > section:last-of-type {
+    @include flex(
+      column,
+      $w: 65vw,
+      $h: 95vh,
+      $a-i: flex-start,
+      $j-c: flex-start
+    );
+    margin: 1rem;
+    background-color: $white;
+    box-shadow: 0 0 5px 0 rgb(190, 190, 209);
 
-    > p {
-      width: 80%;
-      margin: 0.8rem;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #2874f0;
-    }
+    > div {
+      height: 6rem;
+      margin: 2rem;
 
-    > a {
-      width: 30%;
-      margin: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 2.5rem;
-      color: #ffffff;
-      background: rgb(7, 3, 36);
-      border-radius: 4px;
-      cursor: pointer;
+      > h3 {
+        font-weight: 500;
+      }
+      > div {
+        display: flex;
+        > p {
+          width: 17rem;
+          margin-top: 1rem;
+          margin-right: 1rem;
+          padding: 1rem;
+          border: 1px solid gainsboro;
+        }
+      }
     }
-
-    > button {
-      margin: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 2.5rem;
-      width: 30%;
-      border: none;
-      color: #ffffff;
-      background: rgb(7, 3, 36);
-      border-radius: 4px;
-    }
+  }
+  > button {
+    display: none;
   }
 }
 
@@ -91,38 +114,75 @@
   .profile {
     width: 100%;
     flex-direction: column;
+    height: fit-content;
 
-    > section:first-child {
+    > section:first-of-type {
       width: 100%;
-      > div {
-        height: 10rem;
-        width: 10rem;
+      margin: 0;
+      background: $bg2;
+      > div:first-of-type {
+        height: 4.5rem;
+        width: 100%;
+        flex-direction: row;
+        padding: 1rem;
+        box-shadow: none;
+        border: 2px solid $b1;
         > img {
-          height: 9.7rem;
-          width: 9.7rem;
+          display: none;
+        }
+        > span {
+          font-size: 1rem;
         }
       }
-
+      > div:last-of-type {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.5rem 0;
+        margin-top: 0;
+        box-shadow: none;
+        > a {
+          width: 45%;
+          border: 1px solid $b1;
+          margin: 0.3rem;
+          border-radius: 8px;
+          > .arrow {
+            display: none;
+          }
+        }
+      }
       > button {
-        margin-bottom: 0.5rem;
+        display: none;
       }
     }
 
-    > section:nth-child(2n) {
-      border: none;
+    > section:last-of-type {
       width: 100%;
-      padding: 0;
-      > p {
-        width: 95vw;
-        font-size: 1.2rem;
-      }
-      > a {
-        width: 95vw;
-      }
+      margin: 0;
+      height: fit-content;
+      > div {
+        height: 6rem;
+        margin: 0.5rem;
 
-      > button {
-        width: 95vw;
+        > div {
+          display: flex;
+          > p {
+            width: 100%;
+            border: none;
+            padding: 0;
+          }
+        }
       }
+    }
+    > button {
+      @include flex();
+      width: 95vw;
+      margin: 0.5rem;
+      padding: 0.7rem;
+      background: $bg2;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px 0 rgb(190, 190, 209);
     }
   }
 }

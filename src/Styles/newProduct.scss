@@ -1,44 +1,42 @@
 @import "colors";
 .main {
-  display: flex;
-  background: $bg;
   width: 100%;
+  display: flex;
+  background-color: $white;
 
   .product {
     width: 100%;
-    background-color: rgb(255, 255, 255);
+
     > h1 {
       text-align: center;
       margin: 1.5rem;
-      font: 100 3rem "Roboto";
     }
 
     form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      @include flex(column, $j-c: flex-start);
 
       > div {
-        display: flex;
-        align-items: center;
-        width: 40rem;
+        @include flex($w: 70%, $j-c: flex-start, $a-i: flex-start);
         overflow: auto;
-        text-transform: uppercase;
-        text-align: center;
-        border-bottom: 1px solid rgb(175, 175, 175);
+        border-bottom: 1px solid $c1;
         > svg {
           font-size: 1.5rem;
-          margin-left: 0.4rem;
+          margin-top: 0.7rem;
+          color: $c1;
         }
         div {
-          margin: 0.5rem;
-          overflow-x: auto;
-          border: 1px solid rgb(233, 229, 229);
+          margin: 0.2rem;
+
           > p {
-            margin: 1rem;
+            padding: 1rem;
+            white-space: nowrap;
+            border: 1px solid rgb(233, 229, 229);
           }
           > span {
             color: red;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: translate(-12px, -17px);
           }
           > img {
             width: 5rem;
@@ -46,14 +44,14 @@
             margin: 0.5rem;
           }
         }
-        > button {
-          padding: 0.2rem 0.5rem;
-          border: none;
-          color: rgb(255, 255, 255);
-          background: rgb(3, 2, 36);
+        > span {
+          @include flex();
+          padding: 0.2rem 0.4rem;
+          @include button($w: 3rem);
+          border-radius: 50px;
         }
         > input {
-          width: 40rem;
+          width: 100%;
           padding: 0.5rem 1rem;
           border: none;
           outline: none;
@@ -61,10 +59,7 @@
           font-size: 1rem;
         }
         div {
-          display: flex;
-          width: 100%;
-          border: none;
-          align-items: center;
+          @include flex($j-c: flex-start);
           input,
           > select {
             padding: 0.5rem 1rem;
@@ -75,11 +70,12 @@
           > svg {
             font-size: 1.5rem;
             margin-left: 0.4rem;
+            color: $c1;
           }
         }
 
         > textarea {
-          width: 40rem;
+          width: 100%;
           padding: 0.5rem 1rem;
           outline: none;
           border: none;
@@ -90,23 +86,9 @@
         }
       }
       > button {
-        background-color: $c4;
-        height: 2rem;
-        width: 15rem;
-        color: white;
-        outline: none;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
+        @include button($w: 18rem);
         margin: 1rem;
-        text-align: center;
-        cursor: pointer;
         font-size: 1.1rem;
-
-        &:hover {
-          background-color: $c3;
-          color: $c6;
-        }
       }
     }
   }

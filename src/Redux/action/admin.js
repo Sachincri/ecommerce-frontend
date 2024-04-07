@@ -2,10 +2,11 @@ import { server } from "../store";
 import axios from "axios";
 
 export const createProducts = (formData) => async (dispatch) => {
+
   try {
     const config = {
       headers: {
-        "Content-type": "multipart/form-data",
+        "Content-Type": "multipart/form-data",
       },
       withCredentials: true,
     };
@@ -34,7 +35,6 @@ export const getAdminProducts = () => async (dispatch) => {
     const { data } = await axios.get(`${server}/admin/products`, {
       withCredentials: true,
     });
-    // console.log(data);
     dispatch({
       type: "getAdminProductsSuccess",
       payload: data,
@@ -176,7 +176,6 @@ export const updateOrder = (id, order) => async (dispatch) => {
       order,
       config
     );
-    // console.log(id, order);
     dispatch({ type: "updateOrderSuccess", payload: data.message });
   } catch (error) {
     dispatch({

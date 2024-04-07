@@ -2,14 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../Sidebar";
 import { DataGrid } from "@mui/x-data-grid";
-import {
-  deleteUser,
-  getAllUsers,
-} from "../../../Redux/action/admin";
 import { toast } from "react-hot-toast";
-import { Box, Typography, Avatar } from "@mui/material";
+import { Box, Avatar } from "@mui/material";
 import Loader from "../../layout/Loader";
 import Actions from "../Action";
+import { deleteUser, getAllUsers } from "../../../Redux/action/admin";
 
 const UsersList = () => {
   const { users, error, message, loading } = useSelector(
@@ -32,7 +29,7 @@ const UsersList = () => {
       toast.success(message);
       dispatch({ type: "clearMessage" });
     }
-
+    window.scrollTo(0, 0);
     dispatch(getAllUsers());
   }, [dispatch, error, message]);
 
@@ -42,9 +39,7 @@ const UsersList = () => {
       headerName: "Avatar",
       minWidth: 20,
       renderCell: (params) => {
-        return (
-          <Avatar src={params.row.avatar} alt={params.row.name}  />
-        );
+        return <Avatar src={params.row.avatar} alt={params.row.name} />;
       },
     },
     {
@@ -67,7 +62,7 @@ const UsersList = () => {
         return (
           <>
             {params.row.role === "admin" ? (
-              <span >{params.row.role}</span>
+              <span>{params.row.role}</span>
             ) : (
               <span>{params.row.role}</span>
             )}
@@ -129,12 +124,14 @@ const UsersList = () => {
       ) : (
         <>
           <div>
+            <h2 className="heading">Dashboard</h2>
+
             <h1>Manage Users</h1>
             <Box sx={{ height: "100%", width: "100%" }}>
-            <DataGrid
-              columns={columns}
-              rows={rows}
-              initialState={{
+              <DataGrid
+                columns={columns}
+                rows={rows}
+                initialState={{
                   pagination: {
                     paginationModel: {
                       pageSize: 10,
@@ -142,8 +139,8 @@ const UsersList = () => {
                   },
                 }}
                 pageSizeOptions={[10]}
-            />
-          </Box>
+              />
+            </Box>
           </div>
         </>
       )}

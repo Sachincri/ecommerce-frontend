@@ -1,19 +1,17 @@
 import React from "react";
-import { MdError } from "react-icons/md";
 import { Link } from "react-router-dom";
-
+import Notfound from "../../assets/noproducts.png";
 const NotFound = () => {
   return (
-    <section className="notfound">
-      <main>
-        <div>
-          <MdError />
-          <h1>404</h1>
-        </div>
-        <p>Page not found, click below to go to home page.</p>
-        <button><Link to="/">Go to Home</Link></button>
-      </main>
-    </section>
+    <div className="notfound">
+      <img src={Notfound} alt="" />
+      <p>
+        Unfortunately the page you are looking for has been moved or deleted
+      </p>
+      <div>
+        <Link to={"/"}>GO TO HOMEPAGE</Link>
+      </div>
+    </div>
   );
 };
 

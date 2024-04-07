@@ -1,0 +1,296 @@
+.order_summary {
+  @include flex(column, $a-i: flex-start);
+  background-color: $bg;
+
+  .order_summary_1 {
+    @include flex($a-i: flex-start);
+    section {
+      width: 63%;
+      margin-top: 0.8rem;
+
+      .order_summary_login {
+        width: 100%;
+        background: $bg2;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+
+        > div:first-of-type {
+          @include flex($h: 3rem, $j-c: space-between);
+
+          > div {
+            display: flex;
+            > p {
+              background-color: #f0eded;
+              padding: 0.1rem 0.4rem;
+              border-radius: 2px;
+              font-size: 0.8rem;
+              margin-left: 1.7rem;
+              color: $c1;
+            }
+            > h4 {
+              color: #9b9999;
+              font-weight: 500;
+              padding-left: 1rem;
+            }
+          }
+          a {
+            padding: 0.4rem 1rem;
+            border-radius: 5px;
+            border: 1.5px solid rgb(239, 239, 241);
+            color: $c1;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+          }
+        }
+        > div:last-of-type {
+          display: flex;
+          padding-left: 3.9rem;
+          padding-bottom: 1rem;
+          p {
+            font-size: 0.9rem;
+            color: #020314;
+            font-weight: 500;
+            margin-right: 0.4rem;
+          }
+          span {
+            font-size: 0.9rem;
+            color: #000000;
+            font-weight: 400;
+            margin-right: 0.4rem;
+          }
+        }
+      }
+
+      > .order_summary_shipping {
+        width: 100%;
+        margin-top: 1rem;
+        background: $bg2;
+        border-radius: 1px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+
+        > div:last-of-type {
+          background: $bg2;
+
+          > div {
+            padding-left: 3.9rem;
+            padding-top: 0.6rem;
+
+            div {
+              margin-top: 0.5rem;
+
+              > span {
+                font-weight: 500;
+                font-size: 1rem;
+                margin-right: 1rem;
+              }
+
+              > div {
+                margin-left: 2rem;
+                margin-top: 1rem;
+              }
+            }
+          }
+          > button {
+            padding: 0.9rem 2.5rem;
+            border: none;
+            background: #eb5e00;
+            color: $white;
+            font-size: 1rem;
+            margin: 1rem 3.8rem;
+          }
+        }
+      }
+
+      .order_summary_mob_view {
+        display: none;
+      }
+
+      > .order_summary_order_item {
+        margin-top: 1rem;
+        width: 100%;
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+        > div {
+          .cartItem_sec_2 {
+            > p {
+              display: none;
+            }
+          }
+        }
+
+        .next_button {
+          @include flex($j-c: flex-end);
+          background: $bg2;
+          margin-top: 1rem;
+          padding: 1rem;
+
+          > button {
+            @include button;
+          }
+        }
+      }
+    }
+
+    > aside {
+      position: sticky;
+      top: 2.5rem;
+    }
+    .order_summary_payment {
+      margin: 1rem 0;
+      width: 100%;
+      background: $bg2;
+      border-radius: 2px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+      .payment_s2 {
+        display: flex;
+
+        button {
+          @include button($w: 12rem);
+        }
+      }
+    }
+  }
+  .order_summary_2 {
+    @include flex($h: 6rem);
+    border-top: 1px solid #c7c7c7;
+
+    > button {
+      display: none;
+    }
+
+    > div:first-of-type {
+      @include flex;
+      > p {
+        margin: 0.5rem;
+        font-size: 0.9rem;
+        color: #8d8c8c;
+      }
+      > span {
+        font-size: 0.9rem;
+        color: #8b8a8a;
+      }
+    }
+
+    > div:last-of-type {
+      @include flex($w: 50%);
+      > p {
+        margin: 0.3rem;
+        font-size: 0.9rem;
+        color: #8d8c8c;
+      }
+    }
+  }
+  .tab_head {
+    @include flex($h: 3rem, $j-c: flex-start);
+    background: $bg2;
+
+    p {
+      background-color: #f0eded;
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      margin-left: 1.7rem;
+      color: #1422eb;
+    }
+    > h4 {
+      color: #9b9999;
+      font-weight: 500;
+      padding-left: 1rem;
+    }
+  }
+  .steps {
+    background: $c1;
+    color: $white;
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    > p {
+      background-color: $white;
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      margin-left: 1.7rem;
+      color: $c1;
+    }
+    > h4 {
+      padding-left: 1rem;
+    }
+  }
+  > div {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .order_summary {
+    .order_summary_1 {
+      @include flex(column);
+      > section {
+        width: 100%;
+        margin-top: -0.5rem;
+
+        .order_summary_login {
+          border: 2px solid red;
+          display: none;
+        }
+        .order_summary_order_item {
+          display: none;
+        }
+        .order_summary_mob_view {
+          width: 100%;
+          display: inline;
+          box-shadow: 0 2px 5px 0 rgb(199, 198, 198);
+        }
+        > .order_summary_shipping {
+          margin-bottom: 0.5rem;
+          box-shadow: 0 0 2px 0 rgb(182, 179, 209);
+
+          div:last-of-type {
+            padding-bottom: 1rem;
+            > div {
+              padding: 0.1rem 0.5rem;
+            }
+            > button {
+              display: none;
+            }
+          }
+        }
+        .order_summary_payment {
+          display: none;
+        }
+        .steps {
+          background: $bg2;
+          color: rgb(156, 153, 153);
+          border-bottom: 1px solid $b1;
+          > p {
+            display: none;
+          }
+          > h4 {
+            padding-left: 0.5rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+    > .order_summary_2 {
+      @include flex($j-c: flex-end);
+      padding: 1rem;
+      background: $bg2;
+      position: sticky;
+      bottom: 0;
+
+      > button {
+        @include button;
+        display: block;
+        border-radius: 5px;
+        background: #ff6702;
+        height: 3rem;
+      }
+      > div:first-of-type {
+        display: none;
+      }
+      > div:last-of-type {
+        display: none;
+      }
+    }
+  }
+}

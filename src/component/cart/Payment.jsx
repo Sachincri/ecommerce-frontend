@@ -8,10 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { createOrder, paymentVerification } from "../../Redux/action/order";
 
 const Payment = () => {
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { cartItems, shippingInfo } = useSelector((state) => state.cart);
+
   const { user } = useSelector((state) => state.user);
   const { message, error } = useSelector((state) => state.order);
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -30,7 +32,6 @@ const Payment = () => {
           cartItems,
           paymentMethod,
           orderInfo.itemsPrice,
-          orderInfo.tax,
           orderInfo.shippingCharges,
           orderInfo.totalPrice
         )
@@ -49,7 +50,6 @@ const Payment = () => {
           paymentMethod,
           orderItems: cartItems,
           itemsPrice: orderInfo.itemsPrice,
-          taxPrice: orderInfo.tax,
           shippingCharges: orderInfo.shippingCharges,
           totalAmount: orderInfo.totalPrice,
         },
@@ -65,7 +65,6 @@ const Payment = () => {
         key,
         amount: order.amount,
         currency: "INR",
-        photo: user.avatar.url,
         name: user.name,
         description: "",
         order_id: order.id,
@@ -84,9 +83,7 @@ const Payment = () => {
           );
         },
 
-        theme: {
-          color: "#0c0c22",
-        },
+        theme: { color: "#2874f0" },
       };
       const razorpay = new window.Razorpay(options);
       razorpay.open();
@@ -98,7 +95,7 @@ const Payment = () => {
       toast.success(message);
       dispatch({ type: "clearMessage" });
       dispatch({ type: "emptyState" });
-      navigate("/ordersuccess");
+      navigate("/");
     }
     if (error) {
       toast.error(error);
@@ -109,36 +106,36 @@ const Payment = () => {
   return (
     <>
       <CheckoutSteps activeStep={3} />
-      <section className="confirmOrder">
-        <main>
-          <h1>Confirm Order</h1>
+      <main className="confirmOrder">
+        <h1>PAYMENT</h1>
 
-          <form onSubmit={submitHandler}>
-            <div>
-              <label>Cash On Delivery</label>
-              <input
-                type="radio"
-                name="payment"
-                onChange={() => setPaymentMethod("COD")}
-                required
-              />
-            </div>
-            <div>
-              <label>Online</label>
-              <input
-                type="radio"
-                required
-                name="payment"
-                onChange={() => setPaymentMethod("Online")}
-              />
-            </div>
+        <form onSubmit={submitHandler}>
+          <div>
+            <label>Cash On Delivery</label>
+            <input
+              type="radio"
+              name="payment"
+              onChange={() => setPaymentMethod("COD")}
+              required
+            />
+          </div>
+          <div>
+            <label>Online</label>
+            <input
+              type="radio"
+              required
+              name="payment"
+              onChange={() => setPaymentMethod("Online")}
+            />
+          </div>
 
+          <div className="button">
             <button disabled={disableBtn} type="submit">
               Place Order
             </button>
-          </form>
-        </main>
-      </section>
+          </div>
+        </form>
+      </main>
     </>
   );
 };

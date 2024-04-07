@@ -1,12 +1,11 @@
 .search {
-  
   > form {
     display: flex;
-    margin-left: 5rem;
-    box-shadow: 0 0 4px 0 rgb(79, 79, 122);
+    margin-left: 0.8rem;
+    box-shadow: 0 0 4px 0 rgb(49, 49, 66);
     > input {
-      height: 2.4rem;
-      width: 30rem;
+      height: 36px;
+      width: 25rem;
       background-color: white;
       border: none;
       outline: none;
@@ -14,18 +13,15 @@
     }
 
     button {
-      height: 2.4rem;
-      width: 2.5rem;
+      @include flex($w: 2.5rem, $h: 36px);
       border: none;
       outline: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
       background-color: rgb(255, 255, 255);
-      
+
       > svg {
         font-size: 1.5rem;
-        color: #2874f0;
+        color: $c1;
       }
     }
   }
@@ -33,17 +29,21 @@
 
 @media screen and (max-width: 600px) {
   .search {
-    background-color: #2874f0;
     padding: 0.5rem;
     width: 100vw;
+    height: 100vh;
     form {
       margin-left: 0rem;
       background-color: rgb(255, 255, 255);
+      box-shadow: none;
+      border-bottom: 1px solid gray;
       > input {
         width: 100vw;
+        height: 3.5rem;
       }
       button {
         width: 13vw;
+        height: 3.5rem;
       }
     }
   }

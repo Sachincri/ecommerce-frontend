@@ -1,35 +1,68 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getDiscount } from "../product/ProductDetails";
+import { addToCart, removeFromCart } from "../../Redux/action/cart";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+
 const CartItemCard = ({
-  item,
-  deleteCartItems,
-  decreaseQuantity,
-  increaseQuantity,
+  product,
+  quantity,
+  name,
+  image,
+  price,
+  cuttedPrice,
+  stock,
+  discount,
 }) => {
+  const dispatch = useDispatch();
+
+  const increaseQuantity = (id, quantity, stock) => {
+    const newQty = quantity + 1;
+    if (stock <= quantity) {
+      return;
+    }
+    dispatch(addToCart(id, newQty));
+  };
+
+  const decreaseQuantity = (id, quantity) => {
+    const newQty = quantity - 1;
+    if (1 >= quantity) {
+      return;
+    }
+    dispatch(addToCart(id, newQty));
+  };
+
+  const deleteCartItems = (id) => {
+    dispatch(removeFromCart(id));
+    toast.success("Item Remove");
+  };
   return (
     <main className="cartItem">
-      <div>
-        <img src={item.image} alt="img" />
-
+      <div className="cartItem_sec_1">
         <div>
-          <Link to={`/product/${item.product}`}>
-            {item.name.length > 60
-              ? `${item.name.substring(0, 60)}...`
-              : item.name}
+          <img src={image} alt="img" />
+        </div>
+        <div>
+          <Link to={`/product/${product}`}>
+            {name?.length > 60 ? `${name.substring(0, 60)}...` : name}
           </Link>
-          <span>{` ₹${item.price}`}<span>{item.cuttedPrice}</span></span>
-          <span style={{color:"green"}}>{getDiscount(item.price,item.cuttedPrice)} % off</span>
+          <span>
+            {` ₹${price}`}
+            <span>{cuttedPrice}</span>
+          </span>
+          <span style={{ color: "green" }}>{discount} % off</span>
         </div>
       </div>
 
-      <div>
-        <article>
-          <button onClick={decreaseQuantity}>-</button>
-          <input readOnly type="number" value={item.quantity} />
-          <button onClick={increaseQuantity}>+</button>{" "}
-        </article>
-        <p onClick={() => deleteCartItems(item.product)}>Remove</p>
+      <div className="cartItem_sec_2">
+        <div>
+          <button onClick={() => decreaseQuantity(product, quantity)}>-</button>
+          <input readOnly type="number" value={quantity} />
+          <button onClick={() => increaseQuantity(product, quantity, stock)}>
+            +
+          </button>{" "}
+        </div>
+        <p onClick={() => deleteCartItems(product)}>Remove</p>
       </div>
     </main>
   );

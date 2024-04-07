@@ -1,49 +1,118 @@
 @import "colors";
 
 .nav {
-  display: flex;
-  width: 100%;
-  height: 3.8rem;
-  align-items: center;
-  background-color: #2874f0;
+  @include flex($h: 56px, $j-c: flex-start);
+  background-color: $c1;
   position: sticky;
-  z-index: 2;
+  z-index: 5;
   top: 0;
-  > div {
+  > b {
+    display: none;
+  }
+
+  > .logo {
+    align-items: center;
+    margin-left: 12rem;
+
+    > a {
+      display: flex;
+      flex-direction: column;
+
+      > img {
+        width: 75px;
+      }
+
+      div {
+        display: flex;
+
+        p {
+          font-size: 11px;
+          font-style: italic;
+          color: $white;
+          > span {
+            color: #ffe500;
+            font-weight: 500;
+            margin-left: 2px;
+          }
+        }
+        img {
+          height: 10px;
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+  .nav_2 {
     display: flex;
     align-items: center;
+    span {
+      display: none;
+    }
 
-    > img {
-      height: 4rem;
-      width: 4rem;
-      filter: drop-shadow(0 0 10px rgba(133, 131, 131, 0.566));
-      margin-left: 11rem;
+    p {
+      color: $white;
+      font-weight: 500;
+      margin-left: 3rem;
     }
 
     > a {
-      color: $white;
       display: flex;
       align-items: center;
+      color: $bg;
       font-weight: 400;
-      margin-left: 5rem;
+      margin-left: 1.5rem;
+
+      > section {
+        > p {
+          cursor: pointer;
+          font-size: 1rem;
+          color: rgb(255, 255, 255);
+        }
+        > div {
+          display: none;
+          position: absolute;
+          width: 15rem;
+
+          background-color: $white;
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+          border-radius: 2px 2px 8px 8px;
+
+          a {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            p:first-of-type {
+              color: $c1;
+              margin: 0.2rem;
+              font-size: 0.9rem;
+              font-weight: 400;
+            }
+            p:last-of-type {
+              color: rgb(109, 106, 106);
+              margin-left: 0.5rem;
+              font-size: 0.9rem;
+              font-weight: 400;
+            }
+          }
+        }
+      }
 
       > svg {
         color: $white;
         transition: inherit;
-        font-size: 2rem;
+        font-size: 1.2rem;
+        margin-left: 3rem;
+        margin-right: 0.5rem;
       }
-      > p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      > span {
+        @include flex(1rem, 1rem, center);
         position: absolute;
-        border-radius: 0.5rem;
-        color: #ffffff;
-        width: 1.2rem;
-        height: 1.2rem;
-        font: 400 0.8rem;
-        transform: translate(3rem, -1.2rem);
-        border: 2px solid rgb(255, 255, 255);
+        border-radius: 1rem;
+        color: $white;
+        font-size: 0.7rem;
+        transform: translate(3.6rem, -0.7rem);
+        border: 1.5px solid rgb(255, 255, 255);
         background-color: #ff0000;
       }
     }
@@ -52,41 +121,60 @@
 
 @media screen and (max-width: 600px) {
   .nav {
-    align-items: self-start;
-    height: 6.5rem;
-    padding: 0.4rem;
-    position: sticky;
-    top: -2.8rem;
-    z-index: 100;
-    justify-content: space-between;
+    > b {
+      display: flex;
+    }
+    > .logo {
+      width: 30%;
+      align-items: center;
+      margin-left: 4%;
+      > a {
+        display: flex;
+        flex-direction: column;
+        > img {
+          width: 55px;
+        }
+        div {
+          display: flex;
 
-    > div:first-child {
-      > img {
-        margin-left: 0;
-        height: 40px;
-        width: 40px;
-        border-radius: 40px;
+          p {
+            font-size: 10px;
+          }
+          img {
+            height: 10px;
+            margin-left: 2px;
+          }
+        }
       }
     }
-    > span:nth-child(2n) {
-      position: relative;
-      right: 47px;
-      background-color: rgb(6, 8, 32);
-      top: 2.5rem;
+    > span {
+      display: none;
     }
+    .nav_2 {
+      display: flex;
+      width: 60%;
+      justify-content: flex-end;
 
-    > div:nth-child(3n) {
-      position: relative;
-      right: 14.1rem;
-      a {
-        margin: 0 0.5rem;
-        > svg {
-          margin-top: 0.3rem;
+      span {
+        display: inline;
+        > a {
+          svg {
+            color: $white;
+            font-size: 1.5rem;
+            transform: translate(2.2rem, 0.2rem);
+          }
         }
-        > p {
-          font: 400 0.5rem;
-          transform: translate(3rem, -1rem);
+      }
+      p {
+        display: none;
+      }
+      > a {
+        b {
+          display: none;
         }
+      }
+      .cart_i {
+        margin-right: 1.6rem;
       }
     }
   }

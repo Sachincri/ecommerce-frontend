@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../Sidebar";
 import toast from "react-hot-toast";
-import { Button } from "@mui/material";
+
 import { FaImages } from "react-icons/fa";
 import Loader from "../../layout/Loader";
 import { BsSpellcheck } from "react-icons/bs";
@@ -9,7 +9,7 @@ import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { updateProduct } from "../../../Redux/action/admin";
-import { getProductDetails } from "../../../Redux/action/productAction";
+import { getProductDetails } from "../../../Redux/action/product";
 import {
   MdAccountTree,
   MdDescription,
@@ -44,6 +44,7 @@ const UpdateProduct = () => {
   const [highlightInput, setHighlightInput] = useState("");
 
   const categories = [
+    "Mobiles",
     "Laptop",
     "Footwear",
     "Bottom",
@@ -56,7 +57,6 @@ const UpdateProduct = () => {
     if (!highlightInput.trim()) return;
     setHighlights([...highlights, highlightInput]);
     setHighlightInput("");
-
   };
   const addOffers = () => {
     const trimmedOffers = offersInput.trim();
@@ -80,7 +80,7 @@ const UpdateProduct = () => {
     formData.set("description", description);
     formData.append("cuttedPrice", cuttedPrice);
     images.forEach((image) => {
-      formData.append("images", image);
+      formData.append("file", image);
     });
     offers.forEach((off) => {
       formData.append("offers", off);
@@ -103,8 +103,8 @@ const UpdateProduct = () => {
 
       reader.onload = () => {
         if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
+          setOldImages((prevImg) => [...prevImg, reader.result]);
+          setImages((prevImg) => [...prevImg, reader.result]);
         }
       };
 
@@ -113,7 +113,7 @@ const UpdateProduct = () => {
   };
   const removeOffers = (index) => {
     setOffers(offers.filter((h, i) => i !== index));
-  }; 
+  };
   useEffect(() => {
     if (product && product._id !== productId) {
       dispatch(getProductDetails(productId));
@@ -128,7 +128,7 @@ const UpdateProduct = () => {
       setHighlights(product.highlights);
       setCuttedPrice(product.cuttedPrice);
       setDescription(product.description);
-      // setHighlightInput(product.highlightInput);
+      setHighlightInput(product.highlightInput);
     }
     if (error) {
       toast.error(error);
@@ -140,17 +140,21 @@ const UpdateProduct = () => {
       dispatch({ type: "clearMessage" });
       navigate("/admin/dashboard");
     }
+    window.scrollTo(0, 0);
   }, [dispatch, error, product, message, productId, navigate, images]);
 
   return (
     <>
-      <div className="main">
-        <Sidebar />
-        {loading ? (
-          <Loader />
-        ) : (
+      {" "}
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="main">
           <>
+            <Sidebar />
             <div className="product">
+              <h2 className="heading">Dashboard</h2>
+
               <h1>Update Product</h1>
               <form
                 onSubmit={updateProductSubmitHandler}
@@ -221,7 +225,6 @@ const UpdateProduct = () => {
                   <input
                     type="text"
                     placeholder="Warranty"
-                    required
                     onChange={(e) => setWarranty(e.target.value)}
                     value={warranty}
                   />
@@ -231,10 +234,9 @@ const UpdateProduct = () => {
                   <FaImages />
                   <input
                     type="file"
-                    name="avatar"
+                    name="file"
                     accept="image/*"
                     onChange={updateProductImagesChange}
-                    multiple
                   />
                 </div>
                 <div>
@@ -253,41 +255,43 @@ const UpdateProduct = () => {
                   ))}
                 </div>
                 <div>
-              <AiFillHighlight />
-              <input
-                value={offersInput}
-                type="text"
-                placeholder="Offers"
-                onChange={(e) => setOffersInput(e.target.value)}
-              />
-              <button onClick={() => addOffers()}>Add</button>
-            </div>
-
-            <div>
-              {offers.map((off, i) => (
-                <div key={i}>
-                  <span onClick={() => removeOffers(i)}>
-                    <MdOutlineClose />
-                  </span>
-                  <p>{off}</p>
+                  <AiFillHighlight />
+                  <input
+                    value={offersInput}
+                    type="text"
+                    placeholder="Offers"
+                    onChange={(e) => setOffersInput(e.target.value)}
+                  />
+                  <span onClick={() => addOffers()}>Add</span>
                 </div>
-              ))}
-            </div>
+
                 <div>
-              <AiFillHighlight />
-              <input
-                value={highlightInput}
-                type="text"
-                placeholder="Highlight"
-                onChange={(e) => setHighlightInput(e.target.value)}
-              />
-              <b onClick={() => addHighlight()}>Add</b>
-            </div>
+                  {offers.map((off, i) => (
+                    <div key={i}>
+                      <p>{off}</p>{" "}
+                      <span onClick={() => removeOffers(i)}>
+                        <MdOutlineClose />
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <AiFillHighlight />
+                  <input
+                    value={highlightInput}
+                    type="text"
+                    placeholder="Highlight"
+                    onChange={(e) => setHighlightInput(e.target.value)}
+                  />
+                  <span onClick={() => addHighlight()}>Add</span>
+                </div>
                 <div>
                   {highlights.map((h, i) => (
                     <div key={i}>
                       <p>{h}</p>
-                      <span onClick={() => deleteHighlight(i)}>X</span>
+                      <span onClick={() => deleteHighlight(i)}>
+                        <MdOutlineClose />
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -301,14 +305,14 @@ const UpdateProduct = () => {
                     rows="1"
                   ></textarea>
                 </div>
-                <Button type="submit" isLoading={loading}>
+                <button type="submit" isLoading={loading}>
                   Create
-                </Button>
+                </button>
               </form>
             </div>
           </>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };

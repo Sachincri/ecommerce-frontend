@@ -3,10 +3,10 @@ import Sidebar from "../Sidebar";
 import { Box, Avatar, Rating } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector, useDispatch } from "react-redux";
-import { getAdminProducts, deleteProduct } from "../../../Redux/action/admin";
 import toast from "react-hot-toast";
 import Loader from "../../layout/Loader";
 import Actions from "../Action";
+import { getAdminProducts, deleteProduct } from "../../../Redux/action/admin";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const ProductList = () => {
       toast.success(message);
       dispatch({ type: "clearMessage" });
     }
-
+    window.scrollTo(0, 0);
     dispatch(getAdminProducts());
   }, [dispatch, message, error]);
 
@@ -77,7 +77,7 @@ const ProductList = () => {
       field: "rating",
       headerName: "Rating",
       type: "number",
-      minWidth: 70,
+      minWidth: 100,
       flex: 0.3,
       align: "left",
       headerAlign: "left",
@@ -88,6 +88,7 @@ const ProductList = () => {
             value={params.row.rating}
             size="small"
             precision={0.5}
+            sx={{ color: "green" }}
           />
         );
       },
@@ -95,7 +96,7 @@ const ProductList = () => {
     {
       field: "id",
       headerName: "Product ID",
-      minWidth: 100,
+      minWidth: 200,
       flex: 0.5,
     },
     {
@@ -141,6 +142,8 @@ const ProductList = () => {
       ) : (
         <>
           <div>
+            <h2 className="heading">Dashboard</h2>
+
             <h1>Manage Product</h1>
             <Box sx={{ height: "90%", width: "100%" }}>
               <DataGrid

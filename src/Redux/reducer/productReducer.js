@@ -4,6 +4,7 @@ export const productReducer = createReducer(
   {
     products: [],
     product: {},
+    recentlyViewed: [],
   },
   {
     getAllProductsRequest: (state) => {
@@ -12,11 +13,22 @@ export const productReducer = createReducer(
     getAllProductsSuccess: (state, action) => {
       state.loading = false;
       state.products = action.payload.products;
-      state.productsCount= action.payload.productsCount;
-      state.resultPerPage= action.payload.resultPerPage;
-      state.filteredProductsCount= action.payload.filteredProductsCount;
+      state.productsCount = action.payload.productsCount;
+      state.resultPerPage = action.payload.resultPerPage;
+      state.filteredProductsCount = action.payload.filteredProductsCount;
     },
     getAllProductsFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    getRecentlyViewedRequest: (state) => {
+      state.loading = true;
+    },
+    getRecentlyViewedSuccess: (state, action) => {
+      state.loading = false;
+      state.recentlyViewed = action.payload.recentlyViewed;
+    },
+    getRecentlyViewedFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },

@@ -1,6 +1,6 @@
 
 .emptyCart {
-  @include flex(column, $h: 100vh);
+  @include flex(column, $h: 90vh);
 
   > img {
     @include img(18rem, 14rem);

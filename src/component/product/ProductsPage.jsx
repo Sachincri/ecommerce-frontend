@@ -3,7 +3,7 @@ import Header from "../layout/Header";
 import Loader from "../layout/Loader";
 import ProductCard from "./ProductCard";
 import Slider from "@mui/material/Slider";
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import { VscSettings } from "react-icons/vsc";
 import Pagination from "@mui/material/Pagination";
@@ -34,7 +34,7 @@ const ProductsPage = () => {
     useSelector((state) => state.product);
   const { error, message } = useSelector((state) => state.profile);
 
-  const [price, setPrice] = useState([0, 250000]);
+  const [price, setPrice] = useState([0, 100000]);
   const [category, setCategory] = useState(
     location.search ? location.search.split("=")[1] : ""
   );
@@ -429,25 +429,24 @@ const ProductsPage = () => {
                     <ProductCard {...product} />
                   </div>
                 ))}
-                <Stack spacing={5}>
-                  {filteredProductsCount > resultPerPage && (
-                    <div className="pagination">
-                      <div>
-                        <Pagination
-                          count={Number(
-                            (
-                              (filteredProductsCount + 6) /
-                              resultPerPage
-                            ).toFixed()
-                          )}
-                          page={currentPage}
-                          onChange={(e, val) => setCurrentPage(val)}
-                          color="primary"
-                        />
-                      </div>
+
+                {filteredProductsCount > resultPerPage && (
+                  <div className="pagination">
+                    <div>
+                      <Pagination
+                        count={Number(
+                          (
+                            (filteredProductsCount + 6) /
+                            resultPerPage
+                          ).toFixed()
+                        )}
+                        page={currentPage}
+                        onChange={(e, val) => setCurrentPage(val)}
+                        color="primary"
+                      />
                     </div>
-                  )}
-                </Stack>
+                  </div>
+                )}
               </section>
             </section>
           )}

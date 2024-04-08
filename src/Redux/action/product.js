@@ -5,7 +5,7 @@ export const getAllProducts =
   (
     keyword = "",
     currentPage,
-    price = [0, 250000],
+    price = [0, 100000],
     category,
     ratings = 0,
     discount = 0

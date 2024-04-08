@@ -30,18 +30,18 @@ const RecentlyView = ({ recentlyViewed }) => {
                       </div>
 
                       <div className="wishist_2">
-                        <p>
+                        <span className="big_width">
                           {viewed.name.length > 60
                             ? `${viewed.name.substring(0, 60)}...`
                             : viewed.name}
-                        </p>
+                        </span>
                         <div>
                           <p>
                             {viewed.rating} <GrStar />
                           </p>
                           <p>({viewed.numOfReviews})</p>
                         </div>
-                        <p className="mobile">
+                        <p className="small_width">
                           {viewed.name.length > 20
                             ? `${viewed.name.substring(0, 18)}...`
                             : viewed.name}

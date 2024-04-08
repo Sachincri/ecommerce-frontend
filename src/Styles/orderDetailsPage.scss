@@ -129,11 +129,11 @@
   }
 }
 .small {
-display: none;
+  display: none;
 }
 @media screen and (max-width: 600px) {
   .orderDetailsPage {
-    @include flex(column);border:2px solid red;
+    @include flex(column);
     > h3 {
       padding-left: 0.5rem;
       font-size: 1rem;
@@ -219,13 +219,13 @@ display: none;
     }
     > .payment {
       margin-top: 0.5rem;
-      padding: 1rem;border:2px solid red;
+      padding: 1rem;
     }
   }
   .small {
     display: inline-block;
-    }
-  .big{
-    display: none
+  }
+  .big {
+    display: none;
   }
 }

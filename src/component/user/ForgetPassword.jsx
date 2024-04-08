@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { forgetPassword } from "../../Redux/action/profile";
@@ -39,9 +38,9 @@ const ForgetPassword = () => {
           type={"email"}
         />
 
-        <Button isLoading={loading} type="submit">
+        <button isLoading={loading} type="submit">
           Send
-        </Button>
+        </button>
       </form>
     </main>
   );

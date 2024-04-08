@@ -43,7 +43,7 @@ const RecentlyView = ({ recentlyViewed }) => {
                         </div>
                         <p className="small_width">
                           {viewed.name.length > 20
-                            ? `${viewed.name.substring(0, 18)}...`
+                            ? `${viewed.name.substring(0, 17)}...`
                             : viewed.name}
                         </p>
                       </div>

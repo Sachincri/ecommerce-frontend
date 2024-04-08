@@ -144,6 +144,8 @@
 
       P {
         display: flex;
+        white-space: nowrap;
+        color: $text1;
       }
     }
   }
@@ -161,7 +163,7 @@
     padding: 0.2rem 0.5rem;
   }
   .big_width {
-    display: none;border: 1px solid red;
+    display: none;
   }
 
   .viewed_sec_2 {
@@ -172,7 +174,7 @@
       overflow-x: auto;
       display: flex;
       align-items: center;
-      > div{
+      > div {
         p {
           display: none;
         }

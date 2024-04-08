@@ -1,5 +1,3 @@
-@import "colors";
-
 .nav {
   @include flex($h: 56px, $j-c: flex-start);
   background-color: $c1;

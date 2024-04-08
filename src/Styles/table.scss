@@ -1,4 +1,4 @@
-@import "colors";
+
 
 .tableClass {
   @include flex($a-i: flex-start);
@@ -16,7 +16,7 @@
 @media screen and (max-width: 600px) {
   .tableClass {
     > div {
-      margin-left: -12.5rem;
+      margin-left: -50%;
     }
   }
 }

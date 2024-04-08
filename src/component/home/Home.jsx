@@ -17,13 +17,14 @@ import Electronics from "../../assets/Leptop.webp";
 import { useDispatch, useSelector } from "react-redux";
 import RandomProductsSlider from "./RandomProductsSlider";
 import ProductSlider, { NextBtn, PreviousBtn } from "./ProductSlider";
-import { getAllProducts,getRecentlyViewed,} from "../../Redux/action/product";
+import { getAllProducts, getRecentlyViewed } from "../../Redux/action/product";
 
 const Home = () => {
   const dispatch = useDispatch();
   const { error, products, loading, recentlyViewed } = useSelector(
     (state) => state.product
   );
+  const { user } = useSelector((state) => state.user);
 
   const mobiles = [
     {
@@ -189,10 +190,13 @@ const Home = () => {
       toast.error(error);
       dispatch({ type: "clearError" });
     }
+
+    if (user) {
+      dispatch(getRecentlyViewed());
+    }
     dispatch(getAllProducts());
-    dispatch(getRecentlyViewed());
     window.scrollTo(0, 0);
-  }, [dispatch, error]);
+  }, [dispatch, error, user]);
 
   const banners = [
     { img: banner1, path: "Monitor" },
@@ -298,7 +302,7 @@ const Home = () => {
               />
             </div>
             <div>
-              {recentlyViewed && (
+              {user && recentlyViewed && (
                 <RecentlyView recentlyViewed={recentlyViewed} />
               )}
             </div>

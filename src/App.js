@@ -76,7 +76,6 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/products/:keyword" element={<ProductsPage />} />
             <Route path="/products/:category" element={<ProductsPage />} />
-            <Route path="/products/:search" element={<ProductsPage />} />
             <Route
               path="/login"
               element={

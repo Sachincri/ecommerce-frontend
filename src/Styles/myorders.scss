@@ -137,10 +137,10 @@
     section {
       margin: 0;
       > div {
-        padding: 0.5rem;
         background: $bg2;
         > input {
           height: 3rem;
+          margin: 0.5rem ;
         }
         > button {
           display: none;

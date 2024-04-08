@@ -128,9 +128,12 @@
     box-shadow: 0 0 5px 0 rgb(190, 190, 209);
   }
 }
-
+.small {
+display: none;
+}
 @media screen and (max-width: 600px) {
   .orderDetailsPage {
+    @include flex(column);border:2px solid red;
     > h3 {
       padding-left: 0.5rem;
       font-size: 1rem;
@@ -216,7 +219,13 @@
     }
     > .payment {
       margin-top: 0.5rem;
-      padding: 1rem;
+      padding: 1rem;border:2px solid red;
     }
+  }
+  .small {
+    display: inline-block;
+    }
+  .big{
+    display: none
   }
 }

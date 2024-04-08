@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import toast from "react-hot-toast";
 import CartPrice from "./CartPrice";
 import Header from "../layout/Header";
 import Img from "../../assets/cart.webp";
@@ -7,7 +6,6 @@ import CartItemCard from "./CartItemCard";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllProducts } from "../../Redux/action/product";
-import { addToCart, removeFromCart } from "../../Redux/action/cart";
 
 const Cart = () => {
   const dispatch = useDispatch();

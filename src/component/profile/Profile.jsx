@@ -10,21 +10,23 @@ import { GrFormNext } from "react-icons/gr";
 import { FaUserAlt } from "react-icons/fa";
 import { BsBoxFill } from "react-icons/bs";
 import Logo from "../../assets/logo.png";
-import { MdModeEdit } from "react-icons/md";
-import { loadUser, logout } from "../../Redux/action/user";
+import { logout, loadUser } from "../../Redux/action/user";
 import { updateProfile } from "../../Redux/action/profile";
 import Header from "../layout/Header";
 import { IoMdHeart } from "react-icons/io";
 
 const Profile = ({ user }) => {
   const dispatch = useDispatch();
+  const [edit, setEdit] = useState(false);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const { loading, message, error } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.user);
+  const { message, error } = useSelector((state) => state.profile);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(updateProfile(name, email));
+    setEdit(false);
   };
 
   useEffect(() => {
@@ -36,8 +38,12 @@ const Profile = ({ user }) => {
       toast.success(message);
       dispatch({ type: "clearMessage" });
     }
+
+    setName(user.name);
+    setEmail(user.email);
+    loadUser();
     window.scrollTo(0, 0);
-  }, [dispatch, error, message]);
+  }, [dispatch, error, message, user]);
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -55,7 +61,7 @@ const Profile = ({ user }) => {
               <div>
                 <span>Hello,</span>
                 <div>
-                  <p>{user?.name}</p> <p>customer</p>
+                  <p>{user && user.name}</p> <p>customer</p>
                 </div>
               </div>
             </div>
@@ -89,18 +95,35 @@ const Profile = ({ user }) => {
               <FaSignOutAlt /> Logout
             </button>
           </section>
-          <section>
+          <form onSubmit={submitHandler}>
             <div>
-              <h3>Personal infomation</h3>
               <div>
-                <p>{user?.name}</p>
+                <h3>Personal infomation</h3>
+                <span onClick={() => setEdit(true)}>Edit</span>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  readOnly={!edit}
+                  placeholder="Discount"
+                  onChange={(e) => setName(e.target.value)}
+                />
+
                 <p>customer</p>
               </div>
             </div>
             <div>
               <h3>Email Address</h3>
               <div>
-                <p>{user && user.email}</p>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  readOnly={!edit}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
             </div>
             <div>
@@ -109,7 +132,8 @@ const Profile = ({ user }) => {
                 <p>{user && user.mobileNumber}</p>
               </div>
             </div>
-          </section>
+            {!edit ? "" : <button type="submit">submit</button>}
+          </form>
           <button onClick={logoutHandler}>
             <FaSignOutAlt /> Logout
           </button>

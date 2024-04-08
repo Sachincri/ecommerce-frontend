@@ -4,7 +4,7 @@
   @include flex($h: 100vh, $a-i: flex-start);
   background: $bg;
 
-  > section:first-of-type {
+  > section {
     display: flex;
     width: 20rem;
     margin: 1rem;
@@ -74,7 +74,7 @@
       }
     }
   }
-  > section:last-of-type {
+  > form {
     @include flex(
       column,
       $w: 65vw,
@@ -95,28 +95,71 @@
       }
       > div {
         display: flex;
-        > p {
+        align-items: center;
+        > span {
+          color: $c1;
+          margin-left: 3rem;
+          font-weight: 500;
+        }
+        > input,
+        p {
           width: 17rem;
           margin-top: 1rem;
           margin-right: 1rem;
           padding: 1rem;
+          font-weight: 400;
+          outline-style: none;
+          font-size: 1.1rem;
           border: 1px solid gainsboro;
         }
       }
+    }
+    > button {
+      @include button;
+      margin-left: 75%;
+      border-radius: 2px;
     }
   }
   > button {
     display: none;
   }
 }
+.updateUser {
+  @include flex(column, $h: 80vh);
+> form {
+  @include flex(column, $h: 60vh);
+ > div {
 
+ > input,select {
+    width: 20rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    font-weight: 400;
+    outline-style: none;
+    font-size: 1.1rem;
+    border: 1px solid gainsboro;
+  }
+  > button {
+    @include button;
+    margin-right: 0.5rem;
+  }
+  > a {
+    padding: 0.9rem 3.3rem;
+    margin-top: 1rem;
+    background:$c1;
+    color:$white;
+  }
+  }
+ 
+}
+}
 @media screen and (max-width: 600px) {
   .profile {
     width: 100%;
-    flex-direction: column;
-    height: fit-content;
+    @include flex(column,$h: 100vh, $j-c: flex-start); 
 
-    > section:first-of-type {
+
+    > section {
       width: 100%;
       margin: 0;
       background: $bg2;
@@ -124,25 +167,25 @@
         height: 4.5rem;
         width: 100%;
         flex-direction: row;
-        padding: 1rem;
+        padding: 0.5rem;
         box-shadow: none;
         border: 2px solid $b1;
         > img {
           display: none;
         }
         > span {
-          font-size: 1rem;
+          font-size: 1.2rem;
         }
       }
       > div:last-of-type {
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: center;
-        padding: 0.5rem 0;
-        margin-top: 0;
+        padding: 1.5rem 0;
+        margin: 0;
         box-shadow: none;
         > a {
-          width: 45%;
+          width: 46%;
           border: 1px solid $b1;
           margin: 0.3rem;
           border-radius: 8px;
@@ -156,9 +199,10 @@
       }
     }
 
-    > section:last-of-type {
+    > form {
       width: 100%;
       margin: 0;
+      padding: 0.5rem 0;
       height: fit-content;
       > div {
         height: 6rem;
@@ -166,12 +210,18 @@
 
         > div {
           display: flex;
-          > p {
+
+          > input,
+          p {
             width: 100%;
-            border: none;
-            padding: 0;
+            padding: 0.5rem;
           }
         }
+      }
+      > button {
+        @include button($w:95%);
+        margin: 0 0.5rem;
+        border-radius: 2px;
       }
     }
     > button {

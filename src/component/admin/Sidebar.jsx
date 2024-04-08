@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   RiDashboardFill,
   RiShoppingBag3Fill,
-  RiCloseFill,
   RiHome4Line,
 } from "react-icons/ri";
 import { BiDoughnutChart } from "react-icons/bi";

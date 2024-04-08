@@ -1,6 +1,4 @@
 import { Box, Step, StepLabel, Stepper } from "@mui/material";
-import { useEffect } from "react";
-import { useState } from "react";
 import { BsCircle, BsCheckCircleFill } from "react-icons/bs";
 
 const TrackStepper = ({
@@ -13,7 +11,6 @@ const TrackStepper = ({
   const formatDate = (dt) => {
     return new Date(dt).toUTCString().substring(0, 16);
   };
-  const [mobile, setMobile] = useState(true);
   const steps = [
     {
       status: "Ordered",
@@ -44,14 +41,10 @@ const TrackStepper = ({
       <BsCircle />
     </span>
   );
-  useEffect(() => {
-    if (window.innerWidth < 600) {
-      setMobile(false);
-    }
-  }, []);
+
   return (
-    <Box>
-      {mobile ? (
+    <>
+      <Box className="big">
         <Stepper activeStep={activeStep} sx={{ width: 1000 }} alternativeLabel>
           {steps.map((item, index) => (
             <Step
@@ -74,7 +67,9 @@ const TrackStepper = ({
             </Step>
           ))}
         </Stepper>
-      ) : (
+      </Box>{" "}
+      <Box className="small">
+        {" "}
         <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((item, index) => (
             <Step
@@ -97,8 +92,8 @@ const TrackStepper = ({
             </Step>
           ))}
         </Stepper>
-      )}
-    </Box>
+      </Box>
+    </>
   );
 };
 

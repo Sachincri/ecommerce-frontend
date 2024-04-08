@@ -28,6 +28,7 @@ export const getDiscount = (price, cuttedPrice) => {
 const ProductDetails = () => {
   const { products, product, error, message, loading, recentlyViewed } =
     useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -82,6 +83,7 @@ const ProductDetails = () => {
       toast.success(message);
       dispatch({ type: "clearMessage" });
     }
+
     window.scrollTo(0, 0);
 
     dispatch(getProductDetails(params.id));
@@ -101,9 +103,11 @@ const ProductDetails = () => {
     if (product.images) {
       setImg(product.images[0].url);
     }
+    if (user) {
+      dispatch(getRecentlyViewed());
+    }
     dispatch(getSimilarProducts(product.category));
-    dispatch(getRecentlyViewed());
-  }, [dispatch, product, product.category, product.images]);
+  }, [dispatch, product, product.category, product.images, user]);
 
   return (
     <>
@@ -362,7 +366,7 @@ const ProductDetails = () => {
             </div>
 
             <div>
-              {recentlyViewed && (
+              {user && recentlyViewed && (
                 <RecentlyView recentlyViewed={recentlyViewed} />
               )}
             </div>

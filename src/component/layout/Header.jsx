@@ -17,10 +17,10 @@ const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   const array = [
+    { icon: <FaUserAlt />, name: "My Account", path: "/me" },
     { icon: <BsBoxFill />, name: "My Orders", path: "/myorder" },
     { icon: <FaShoppingCart />, name: "My Cart", path: "/cart" },
     { icon: <IoMdHeart />, name: "WishList", path: "/wishlist" },
-    { icon: <FaUserAlt />, name: "My Account", path: "/me" },
   ];
 
   return (

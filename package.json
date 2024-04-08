@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy":"https://ecommerce-sachin.vercel.app/api/v1",
+  "proxy":"https://ecommerce-server-cbq9.onrender.com/api/v1",
   "dependencies": {
     "@chakra-ui/react": "^2.8.5",
     "@emotion/cache": "^11.11.0",

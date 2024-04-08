@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getUserDetails, updateUserRole } from "../../Redux/action/admin";
 import Loader from "../layout/Loader";
-import Avatar from "@mui/material/Avatar";
 import toast from "react-hot-toast";
+
 const UpdateUser = () => {
   const dispatch = useDispatch();
   const params = useParams();
@@ -15,7 +15,6 @@ const UpdateUser = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-  const [avatarPreview, setAvatarPreview] = useState("");
 
   const userId = params.id;
 
@@ -37,7 +36,6 @@ const UpdateUser = () => {
       setName(user.name);
       setEmail(user.email);
       setRole(user.role);
-      setAvatarPreview(user.avatar.url);
     }
     if (error) {
       toast.error(error);
@@ -62,45 +60,41 @@ const UpdateUser = () => {
 
             <form onSubmit={updateUserSubmitHandler}>
               <div>
-                {/* <!-- input container column --> */}
-                <div>
-                  <input
-                    label="Full Name"
-                    name="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                  <input
-                    label="Email"
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                {/* <!-- input container column --> */}
+                <input
+                  label="Full Name"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              {/* <!-- input container column --> */}
+              <div>
+                {" "}
+                <input
+                  label="Email"
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <select
+                  label="Role"
+                  required
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  <option value={"user"}>User</option>
+                  <option value={"admin"}>Admin</option>
+                </select>
+              </div>
 
-                <div>
-                  <Avatar
-                    alt="Avatar Preview"
-                    src={avatarPreview}
-                    sx={{ width: 56, height: 56 }}
-                  />
-                  <select
-                    label="Role"
-                    required
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
-                  >
-                    <option value={"user"}>User</option>
-                    <option value={"admin"}>Admin</option>
-                  </select>
-                </div>
-
-                <button type="submit">Update</button>
-                <Link to="/admin/users">Cancel</Link>
+              <div>
+              <button type="submit">Update</button>
+              <Link to="/admin/userslist">Cancel</Link>
               </div>
             </form>
           </div>

@@ -109,7 +109,7 @@ const UsersList = () => {
       rows.unshift({
         id: item._id,
         name: item.name,
-        avatar: item.avatar.url,
+        avatar: item.avatar?.url,
         email: item.email,
         role: item.role,
         createdAt: new Date(item.createdAt).toISOString().substring(0, 10),

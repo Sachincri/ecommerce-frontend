@@ -17,7 +17,7 @@ const RecentlyView = ({ recentlyViewed }) => {
           <Slider {...settings}>
             {recentlyViewed &&
               recentlyViewed
-                .map((viewed) => (
+                ?.map((viewed) => (
                   <section className="wishist_card" key={viewed._id}>
                     <div>
                       <IoMdHeart

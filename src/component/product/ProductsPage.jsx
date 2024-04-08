@@ -8,7 +8,6 @@ import { RxCross2 } from "react-icons/rx";
 import { VscSettings } from "react-icons/vsc";
 import Pagination from "@mui/material/Pagination";
 import { RiListSettingsFill } from "react-icons/ri";
-// import NoProducts from "../../assets/noproducts.png";
 import { useDispatch, useSelector } from "react-redux";
 import { GrFormPreviousLink, GrStar } from "react-icons/gr";
 import { Link, useLocation, useParams } from "react-router-dom";
@@ -24,7 +23,6 @@ import {
   Tabs,
   Tab,
 } from "@mui/material";
-import { addToWishList, removeToWishList } from "../../Redux/action/profile";
 import toast from "react-hot-toast";
 
 const ProductsPage = () => {
@@ -116,11 +114,6 @@ const ProductsPage = () => {
   }, [dispatch, error, message]);
 
   useEffect(() => {
-    if (window.innerWidth < 600) {
-      setPriceToggle(false);
-      setRatingsToggle(false);
-    }
-
     dispatch(
       getAllProducts(
         params.keyword,
@@ -436,10 +429,10 @@ const ProductsPage = () => {
                     <ProductCard {...product} />
                   </div>
                 ))}
-                <div className="pagination">
-                  <div>
-                    <Stack spacing={5}>
-                      {filteredProductsCount > resultPerPage && (
+                <Stack spacing={5}>
+                  {filteredProductsCount > resultPerPage && (
+                    <div className="pagination">
+                      <div>
                         <Pagination
                           count={Number(
                             (
@@ -451,10 +444,10 @@ const ProductsPage = () => {
                           onChange={(e, val) => setCurrentPage(val)}
                           color="primary"
                         />
-                      )}
-                    </Stack>
-                  </div>
-                </div>
+                      </div>
+                    </div>
+                  )}
+                </Stack>
               </section>
             </section>
           )}

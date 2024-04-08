@@ -267,6 +267,9 @@
       padding: 0rem;
       > div {
         width: 9rem;
+        > input {
+          padding-left: 0;
+        }
       }
       > p {
         padding-left: 1rem;

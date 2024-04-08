@@ -230,7 +230,7 @@ export const getUserDetails = (id) => async (dispatch) => {
       type: "getUserDetailsRequest",
     });
     const { data } = await axios.get(`${server}/admin/user/${id}`, config);
-    // console.log(data);
+  
     dispatch({
       type: "getUserDetailsSuccess",
       payload: data.user,

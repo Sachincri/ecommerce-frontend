@@ -1,11 +1,10 @@
-
 .main {
   width: 100%;
   display: flex;
   background-color: $white;
 
   .product {
-    width: 100%;
+    width: 86%;
 
     > h1 {
       text-align: center;
@@ -36,7 +35,7 @@
             color: red;
             font-size: 0.8rem;
             font-weight: 600;
-            transform: translate(-12px, -17px);
+            transform: translate(-14px, -18px);
           }
           > img {
             width: 5rem;
@@ -98,13 +97,20 @@
   .main {
     .product {
       width: 100%;
-      margin-left: -12rem;
+      margin-left: -50%;
       form {
         > div {
           width: 90%;
+          > div {
+            input {
+              width: 100%;
+              padding: 0.5rem 0;
+            }
+          }
           > input,
           > select {
             width: 100%;
+            padding: 0.5rem 0;
           }
           > textarea {
             width: 100%;
@@ -112,5 +118,17 @@
         }
       }
     }
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input::file-selector-button {
+    font-weight: bold;
+    color: dodgerblue;
+    padding: 0.1em;
+    border: thin solid grey;
+    border-radius: 3px;
   }
 }

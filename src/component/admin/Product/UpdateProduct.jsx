@@ -33,6 +33,7 @@ const UpdateProduct = () => {
   const [stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [offers, setOffers] = useState([]);
+  const [discount, setDiscount] = useState("");
   const [offersInput, setOffersInput] = useState("");
   const [category, setCategory] = useState("");
   const [warranty, setWarranty] = useState("");
@@ -46,12 +47,14 @@ const UpdateProduct = () => {
   const categories = [
     "Mobiles",
     "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    "Headphone",
+    "Powerbank",
+    "Tshirt",
+    "Jeans",
+    "Shoes",
+    "Kurta",
+    "Saree",
+    "Monitor",
   ];
   const addHighlight = () => {
     if (!highlightInput.trim()) return;
@@ -77,6 +80,7 @@ const UpdateProduct = () => {
     formData.set("stock", stock);
     formData.set("warranty", warranty);
     formData.set("category", category);
+    formData.append("discount", discount);
     formData.set("description", description);
     formData.append("cuttedPrice", cuttedPrice);
     images.forEach((image) => {
@@ -121,9 +125,11 @@ const UpdateProduct = () => {
       setName(product.name);
       setPrice(product.price);
       setStock(product.stock);
+      setOffers(product.offers);
       setImagesPreview(images);
       setOldImages(product.images);
       setWarranty(product.warranty);
+      setWarranty(product.discount);
       setCategory(product.category);
       setHighlights(product.highlights);
       setCuttedPrice(product.cuttedPrice);
@@ -156,10 +162,7 @@ const UpdateProduct = () => {
               <h2 className="heading">Dashboard</h2>
 
               <h1>Update Product</h1>
-              <form
-                onSubmit={updateProductSubmitHandler}
-                encType="multipart/form-data"
-              >
+              <form onSubmit={updateProductSubmitHandler}>
                 <div>
                   <BsSpellcheck />
                   <input
@@ -185,10 +188,19 @@ const UpdateProduct = () => {
                     <MdAttachMoney />
                     <input
                       required
-                      type="number"
                       value={price}
+                      type="number"
                       placeholder="Price"
                       onChange={(e) => setPrice(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      required
+                      value={discount}
+                      type="number"
+                      placeholder="Discount"
+                      onChange={(e) => setDiscount(e.target.value)}
                     />
                   </div>
                 </div>
@@ -236,6 +248,7 @@ const UpdateProduct = () => {
                     type="file"
                     name="file"
                     accept="image/*"
+                    multiple
                     onChange={updateProductImagesChange}
                   />
                 </div>

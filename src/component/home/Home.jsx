@@ -76,7 +76,7 @@ const Home = () => {
       img: "https://rukminim2.flixcart.com/image/200/200/xif0q/shoe/y/4/v/-original-imagsn6qybenjtts.jpeg?q=70",
       title: "rebooks rhx",
       subTitle: "Shop Now!",
-      category: "Camera",
+      category: "Shoes",
     },
     {
       img: "https://rukminim2.flixcart.com/image/200/200/xif0q/ethnic-set/y/v/6/s-abwsd2378-mn-anubhutee-original-imagtufqchduy3dz.jpeg?q=70",

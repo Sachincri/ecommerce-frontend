@@ -6,7 +6,7 @@ export const createProducts = (formData) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-type": "application/json",
       },
       withCredentials: true,
     };
@@ -50,7 +50,7 @@ export const getAdminProducts = () => async (dispatch) => {
 export const updateProduct = (id, formData) => async (dispatch) => {
   try {
     const config = {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { "Content-type": "application/json",},
       withCredentials: true,
     };
     dispatch({ type: "updateProductRequest" });

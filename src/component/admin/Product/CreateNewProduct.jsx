@@ -35,7 +35,7 @@ const CreateNewProduct = () => {
   const [disableBtn, setDisableBtn] = useState(false);
   const [discount, setDiscount] = useState("");
   const categories = [
-    "Mobile",
+    "Mobiles",
     "Laptop",
     "Headphone",
     "Powerbank",
@@ -44,6 +44,7 @@ const CreateNewProduct = () => {
     "Shoes",
     "Kurta",
     "Saree",
+    "Monitor"
   ];
   const submitHandler = (e) => {
     e.preventDefault();
@@ -129,7 +130,7 @@ const CreateNewProduct = () => {
           <h2 className="heading">Dashboard</h2>
 
           <h1>Create Product</h1>
-          <form onSubmit={submitHandler} encType="multipart/form-data">
+          <form onSubmit={submitHandler}>
             <div>
               <BsSpellcheck />
               <input
@@ -204,7 +205,7 @@ const CreateNewProduct = () => {
               <FaImages />
               <input
                 type="file"
-                name="file"
+                name="images"
                 accept="image/*"
                 onChange={changeImageHandler}
                 multiple
@@ -214,9 +215,6 @@ const CreateNewProduct = () => {
             <div>
               {imagesPrev?.map((image, i) => (
                 <div key={i}>
-                  <span>
-                    <MdOutlineClose />
-                  </span>
                   <img src={image} alt="Product Preview" />
                 </div>
               ))}
@@ -234,10 +232,10 @@ const CreateNewProduct = () => {
             <div>
               {highlights.map((h, i) => (
                 <div key={i}>
+                  <p>{h}</p>
                   <span onClick={() => removeHighlight(i)}>
                     <MdOutlineClose />
                   </span>
-                  <p>{h}</p>
                 </div>
               ))}
             </div>
@@ -255,10 +253,10 @@ const CreateNewProduct = () => {
             <div>
               {offers.map((off, i) => (
                 <div key={i}>
+                  <p>{off}</p>
                   <span onClick={() => removeOffers(i)}>
                     <MdOutlineClose />
                   </span>
-                  <p>{off}</p>
                 </div>
               ))}
             </div>

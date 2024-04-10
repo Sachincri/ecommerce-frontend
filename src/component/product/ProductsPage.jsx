@@ -353,7 +353,7 @@ const ProductsPage = () => {
                           getAriaLabel={() => "Price range slider"}
                           aria-labelledby="range-slider"
                           min={0}
-                          max={250000}
+                          max={100000}
                         />
                       </div>
                       <div>

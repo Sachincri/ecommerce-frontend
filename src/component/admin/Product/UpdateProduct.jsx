@@ -67,6 +67,7 @@ const UpdateProduct = () => {
     setOffers((prevOffers) => [...prevOffers, trimmedOffers]);
     setOffersInput("");
   };
+
   const deleteHighlight = (index) => {
     setHighlights(highlights.filter((h, i) => i !== index));
   };
@@ -84,7 +85,7 @@ const UpdateProduct = () => {
     formData.set("description", description);
     formData.append("cuttedPrice", cuttedPrice);
     images.forEach((image) => {
-      formData.append("file", image);
+      formData.append("images", image);
     });
     offers.forEach((off) => {
       formData.append("offers", off);
@@ -129,7 +130,7 @@ const UpdateProduct = () => {
       setImagesPreview(images);
       setOldImages(product.images);
       setWarranty(product.warranty);
-      setWarranty(product.discount);
+      setDiscount(product.discount);
       setCategory(product.category);
       setHighlights(product.highlights);
       setCuttedPrice(product.cuttedPrice);
@@ -246,7 +247,7 @@ const UpdateProduct = () => {
                   <FaImages />
                   <input
                     type="file"
-                    name="file"
+                    name="images"
                     accept="image/*"
                     multiple
                     onChange={updateProductImagesChange}

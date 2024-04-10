@@ -102,7 +102,7 @@ const ProductList = () => {
     {
       field: "actions",
       headerName: "Actions",
-      minWidth: 100,
+      minWidth: 120,
       flex: 0.3,
       type: "number",
       sortable: false,

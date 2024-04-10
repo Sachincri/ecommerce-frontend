@@ -116,7 +116,7 @@ const CreateNewProduct = () => {
     if (message) {
       toast.success(message);
       dispatch({ type: "clearMessage" });
-      navigate("/admin/dashbord");
+      navigate("/admin/dashboard");
     }
     window.scrollTo(0, 0);
     setImagesPrev([...images]);

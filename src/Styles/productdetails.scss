@@ -1,6 +1,10 @@
 .small {
   max-height: 26.5rem;
 }
+
+.img_wrap {
+  border: 1px solid $b2
+}
 .active {
   text-align: center;
   border: 2px solid $c1;
@@ -31,7 +35,7 @@
 
           > div {
             @include flex($w: 70px, $h: 70px);
-            border: 1px solid $b2;
+            // border: 1px solid $b1;
             cursor: pointer;
 
             > img {

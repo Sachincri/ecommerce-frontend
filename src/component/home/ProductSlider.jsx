@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-
+import "../../Styles/home.scss"
 export const PreviousBtn = ({ className, onClick }) => {
   return (
     <div className={className} onClick={onClick}>

@@ -9,6 +9,7 @@ import {
   MdStorage,
   MdAttachMoney,
   MdOutlineClose,
+  MdDiscount,
 } from "react-icons/md";
 import { BsSpellcheck } from "react-icons/bs";
 import { FaImages } from "react-icons/fa";
@@ -44,7 +45,7 @@ const CreateNewProduct = () => {
     "Shoes",
     "Kurta",
     "Saree",
-    "Monitor"
+    "Monitor",
   ];
   const submitHandler = (e) => {
     e.preventDefault();
@@ -79,7 +80,7 @@ const CreateNewProduct = () => {
       reader.onload = () => {
         if (reader.readyState === 2) {
           setImagesPrev((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
+          setImages((old) => [...old, file]);
         }
       };
 
@@ -119,7 +120,6 @@ const CreateNewProduct = () => {
       navigate("/admin/dashboard");
     }
     window.scrollTo(0, 0);
-    setImagesPrev([...images]);
   }, [dispatch, error, message, navigate, images]);
 
   return (
@@ -163,6 +163,7 @@ const CreateNewProduct = () => {
                 />
               </div>
               <div>
+              <MdDiscount/>
                 <input
                   required
                   value={discount}

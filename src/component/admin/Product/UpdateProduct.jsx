@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../Sidebar";
 import toast from "react-hot-toast";
-
+import { MdDiscount } from "react-icons/md";
 import { FaImages } from "react-icons/fa";
 import Loader from "../../layout/Loader";
 import { BsSpellcheck } from "react-icons/bs";
@@ -100,7 +100,6 @@ const UpdateProduct = () => {
     const files = Array.from(e.target.files);
 
     setImages([]);
-    setOldImages([]);
     setImagesPreview([]);
 
     files.forEach((file) => {
@@ -108,8 +107,8 @@ const UpdateProduct = () => {
 
       reader.onload = () => {
         if (reader.readyState === 2) {
-          setOldImages((prevImg) => [...prevImg, reader.result]);
-          setImages((prevImg) => [...prevImg, reader.result]);
+          setImagesPreview((prevImg) => [...prevImg, reader.result]);
+          setImages((prevImg) => [...prevImg, file]);
         }
       };
 
@@ -127,7 +126,6 @@ const UpdateProduct = () => {
       setPrice(product.price);
       setStock(product.stock);
       setOffers(product.offers);
-      setImagesPreview(images);
       setOldImages(product.images);
       setWarranty(product.warranty);
       setDiscount(product.discount);
@@ -196,6 +194,7 @@ const UpdateProduct = () => {
                     />
                   </div>
                   <div>
+                  <MdDiscount/>
                     <input
                       required
                       value={discount}
@@ -320,7 +319,7 @@ const UpdateProduct = () => {
                   ></textarea>
                 </div>
                 <button type="submit" isLoading={loading}>
-                  Create
+                  Update
                 </button>
               </form>
             </div>

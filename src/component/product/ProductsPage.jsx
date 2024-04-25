@@ -54,12 +54,12 @@ const ProductsPage = () => {
   };
 
   const clearAllFilters = () => {
-    setPrice([0, 250000]);
+    setPrice([0, 100000]);
     setRatings(0);
     setDiscount(0);
   };
   const clearPriceFilters = () => {
-    setPrice([0, 250000]);
+    setPrice([0, 100000]);
   };
   const clearRatingFilters = () => {
     setRatings(0);
@@ -78,7 +78,7 @@ const ProductsPage = () => {
     if (event.target.checked) {
       setPrice(value);
     } else {
-      setPrice([0, 250000]);
+      setPrice([0, 100000]);
     }
   };
 
@@ -322,7 +322,7 @@ const ProductsPage = () => {
                     ) : (
                       ""
                     )}
-                    {price[1] < 250000 ? (
+                    {price[1] < 100000 ? (
                       <p>{price[1].toLocaleString()} Min</p>
                     ) : (
                       ""
@@ -336,7 +336,7 @@ const ProductsPage = () => {
                     onClick={() => setPriceToggle(priceToggle)}
                   >
                     <h5>PRICE</h5>
-                    {(JSON.stringify(price) === JSON.stringify([0, 250000])) ===
+                    {(JSON.stringify(price) === JSON.stringify([0, 100000])) ===
                     false ? (
                       <p onClick={() => clearPriceFilters()}>CLEAR</p>
                     ) : (

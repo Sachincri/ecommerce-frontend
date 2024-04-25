@@ -15,6 +15,7 @@ import { BsSpellcheck } from "react-icons/bs";
 import { FaImages } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AiFillHighlight } from "react-icons/ai";
+import { IoShieldCheckmarkSharp } from "react-icons/io5";
 
 const CreateNewProduct = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const CreateNewProduct = () => {
   const [imagesPrev, setImagesPrev] = useState([]);
   const [disableBtn, setDisableBtn] = useState(false);
   const [discount, setDiscount] = useState("");
+  const [warranty, setWarranty] = useState("");
   const categories = [
     "Mobiles",
     "Laptop",
@@ -56,6 +58,7 @@ const CreateNewProduct = () => {
     myForm.append("price", price);
     myForm.append("category", category);
     myForm.append("discount", discount);
+    myForm.set("warranty", warranty);
     myForm.append("cuttedPrice", cuttedPrice);
     myForm.append("description", description);
     images.forEach((image) => {
@@ -163,7 +166,7 @@ const CreateNewProduct = () => {
                 />
               </div>
               <div>
-              <MdDiscount/>
+                <MdDiscount />
                 <input
                   required
                   value={discount}
@@ -201,7 +204,15 @@ const CreateNewProduct = () => {
                 />
               </div>
             </div>
-
+            <div>
+              <IoShieldCheckmarkSharp />
+              <input
+                type="text"
+                placeholder="Warranty"
+                onChange={(e) => setWarranty(e.target.value)}
+                value={warranty}
+              />
+            </div>
             <div>
               <FaImages />
               <input

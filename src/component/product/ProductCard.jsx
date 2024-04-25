@@ -37,7 +37,7 @@ const ProductCard = ({
       </div>
       <Link className={"productCard"} to={`/product/${_id}`}>
         <div className="first">
-          <img src={images && images[0].url} alt={name} />
+          <img src={images && images[0]?.url} alt={name} />
         </div>
 
         <p className="mobile">

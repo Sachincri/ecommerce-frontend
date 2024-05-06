@@ -246,17 +246,19 @@ const ProductDetails = () => {
                   )}
                 </div>
                 <div className="highlights">
-                  <div>
-                    <h5>Highlights</h5>
+                  {product.highlights && (
+                    <div>
+                      <h5>Highlights</h5>
 
-                    <ul>
-                      {product.highlights?.map((highlight, i) => (
-                        <li key={i}>
-                          <p>{highlight}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                      <ul>
+                        {product.highlights?.map((highlight, i) => (
+                          <li key={i}>
+                            <p>{highlight}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
                 <div className="warranty">
                   {product.warranty && (
@@ -267,10 +269,12 @@ const ProductDetails = () => {
                   )}
                 </div>
                 <div className="description">
-                  <div>
-                    <h5>Description</h5>
-                    <article>{product.description}</article>
-                  </div>
+                  {product.description && (
+                    <div>
+                      <h5>Description</h5>
+                      <article>{product.description}</article>
+                    </div>
+                  )}
                 </div>
               </div>
 

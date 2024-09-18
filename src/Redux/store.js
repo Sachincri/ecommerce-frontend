@@ -20,6 +20,6 @@ const store = configureStore({
 
 export default store;
 
-export const server = "https://ecommerce-server-cbq9.onrender.com/api/v1";
+export const server = "https://ecommerce-server-cbq9.onrender.com/api/v1"; 
 
 // export const server = "http://localhost:5000/api/v1";

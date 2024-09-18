@@ -1,8 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-import { Country, State } from "country-state-city";
-=======
->>>>>>> 411b6c8 (Initial commit)
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -80,41 +76,6 @@ const Shipping = () => {
             <div>
               <label>Country</label>
 
-<<<<<<< HEAD
-              <select
-                value={country}
-                required
-                onChange={(e) => setCountry(e.target.value)}
-              >
-                <option value="">Country</option>
-                {Country &&
-                  Country.getAllCountries().map((i) => (
-                    <option value={i.isoCode} key={i.isoCode}>
-                      {i.name}
-                    </option>
-                  ))}
-              </select>
-            </div>
-
-            {country && (
-              <div>
-                <label>State</label>
-                <select
-                  required
-                  value={state}
-                  onChange={(e) => setState(e.target.value)}
-                >
-                  <option value="">State</option>
-                  {State &&
-                    State.getStatesOfCountry(country).map((i) => (
-                      <option value={i.isoCode} key={i.isoCode}>
-                        {i.name}
-                      </option>
-                    ))}
-                </select>
-              </div>
-            )}
-=======
               <input
                 type="text"
                 placeholder="Enter Country"
@@ -124,19 +85,35 @@ const Shipping = () => {
               />
             </div>
 
-        
-              <div>
-                <label>State</label>
-                <input
+            <div>
+              <label>State</label>
+              <input
+                type="text"
+                placeholder="Enter Country"
+                value={state}
+                required
+                onChange={(e) => setState(e.target.value)}
+              />
+            </div>
+
+            <input
+              type="text"
+              placeholder="Enter Country"
+              value={country}
+              required
+              onChange={(e) => setCountry(e.target.value)}
+            />
+
+            <div>
+              <label>State</label>
+              <input
                 type="text"
                 placeholder="Enter State"
                 value={state}
                 required
                 onChange={(e) => setState(e.target.value)}
               />
-              </div>
-    
->>>>>>> 411b6c8 (Initial commit)
+            </div>
 
             <div>
               <label>Pin Code</label>

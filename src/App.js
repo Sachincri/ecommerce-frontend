@@ -1,9 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-<<<<<<< HEAD
-import { useEffect, lazy, Suspense } from "react";
-=======
 import React,{ useEffect, lazy, Suspense } from "react";
->>>>>>> 411b6c8 (Initial commit)
 import { useDispatch, useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import { ProtectedRoute } from "protected-route-react";

@@ -37,15 +37,13 @@ const CreateNewProduct = () => {
   const [disableBtn, setDisableBtn] = useState(false);
   const [discount, setDiscount] = useState("");
   const [warranty, setWarranty] = useState("");
-<<<<<<< HEAD
-=======
   const [specifications, setSpecifications] = useState([]);
-  const [specsInput, setSpecsInput] = useState({heading : "",
+  const [specsInput, setSpecsInput] = useState({
+    heading: "",
     title: "",
     description: "",
   });
-console.log(specsInput,specifications);
->>>>>>> 411b6c8 (Initial commit)
+
   const categories = [
     "Mobiles",
     "Laptop",
@@ -99,9 +97,7 @@ console.log(specsInput,specifications);
       reader.readAsDataURL(file);
     });
   };
-<<<<<<< HEAD
 
-=======
   const handleSpecsChange = (e) => {
     setSpecsInput({ ...specsInput, [e.target.name]: e.target.value });
   };
@@ -109,9 +105,9 @@ console.log(specsInput,specifications);
   const addSpecs = () => {
     if (!specsInput.title.trim() || !specsInput.title.trim()) return;
     setSpecifications([...specifications, specsInput]);
-    setSpecsInput({heading : "", title: "", description: "" });
+    setSpecsInput({ heading: "", title: "", description: "" });
   };
->>>>>>> 411b6c8 (Initial commit)
+
   const addOffers = () => {
     const trimmedOffers = offersInput.trim();
     if (!trimmedOffers) return;
@@ -294,8 +290,6 @@ console.log(specsInput,specifications);
               ))}
             </div>
             <div>
-<<<<<<< HEAD
-=======
               <AiFillHighlight />
               <input
                 value={specsInput.heading}
@@ -334,7 +328,6 @@ console.log(specsInput,specifications);
               ))}
             </div>
             <div>
->>>>>>> 411b6c8 (Initial commit)
               <MdDescription />
 
               <textarea

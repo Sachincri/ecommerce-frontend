@@ -9,7 +9,10 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { GrFormNext } from "react-icons/gr";
 import { FaUserAlt } from "react-icons/fa";
 import { BsBoxFill } from "react-icons/bs";
+<<<<<<< HEAD
 import Logo from "../../assets/logo.png";
+=======
+>>>>>>> 411b6c8 (Initial commit)
 import { logout, loadUser } from "../../Redux/action/user";
 import { updateProfile } from "../../Redux/action/profile";
 import Header from "../layout/Header";
@@ -57,7 +60,11 @@ const Profile = ({ user }) => {
         <main className="profile">
           <section>
             <div>
+<<<<<<< HEAD
               <img src={Logo} alt={user && user.name} />
+=======
+              <img src={"https://res.cloudinary.com/duy38esfv/image/upload/v1683385295/avatars/uvau4cc8ronx1irwpe3p.png"} alt={user && user.name} />
+>>>>>>> 411b6c8 (Initial commit)
               <div>
                 <span>Hello,</span>
                 <div>

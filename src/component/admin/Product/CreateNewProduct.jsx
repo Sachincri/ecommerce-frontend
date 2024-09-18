@@ -37,6 +37,15 @@ const CreateNewProduct = () => {
   const [disableBtn, setDisableBtn] = useState(false);
   const [discount, setDiscount] = useState("");
   const [warranty, setWarranty] = useState("");
+<<<<<<< HEAD
+=======
+  const [specifications, setSpecifications] = useState([]);
+  const [specsInput, setSpecsInput] = useState({heading : "",
+    title: "",
+    description: "",
+  });
+console.log(specsInput,specifications);
+>>>>>>> 411b6c8 (Initial commit)
   const categories = [
     "Mobiles",
     "Laptop",
@@ -90,7 +99,19 @@ const CreateNewProduct = () => {
       reader.readAsDataURL(file);
     });
   };
+<<<<<<< HEAD
 
+=======
+  const handleSpecsChange = (e) => {
+    setSpecsInput({ ...specsInput, [e.target.name]: e.target.value });
+  };
+
+  const addSpecs = () => {
+    if (!specsInput.title.trim() || !specsInput.title.trim()) return;
+    setSpecifications([...specifications, specsInput]);
+    setSpecsInput({heading : "", title: "", description: "" });
+  };
+>>>>>>> 411b6c8 (Initial commit)
   const addOffers = () => {
     const trimmedOffers = offersInput.trim();
     if (!trimmedOffers) return;
@@ -273,6 +294,47 @@ const CreateNewProduct = () => {
               ))}
             </div>
             <div>
+<<<<<<< HEAD
+=======
+              <AiFillHighlight />
+              <input
+                value={specsInput.heading}
+                type="text"
+                placeholder="heading"
+                onChange={handleSpecsChange}
+              />
+            </div>
+            <div>
+              <input
+                value={specsInput.title}
+                onChange={handleSpecsChange}
+                name="title"
+                label="Name"
+                placeholder="Model No"
+              />
+              <input
+                value={specsInput.description}
+                onChange={handleSpecsChange}
+                name="description"
+                placeholder="WJDK42DF5"
+              />
+              <span onClick={() => addSpecs()}>Add</span>
+            </div>
+
+            <div>
+              {specifications.map((spec, i) => (
+                <div key={i}>
+                  <p>{spec.heading}</p>
+                  <p>{spec.title}</p>
+                  <p>{spec.description}</p>
+                  <span onClick={() => removeOffers(i)}>
+                    <MdOutlineClose />
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div>
+>>>>>>> 411b6c8 (Initial commit)
               <MdDescription />
 
               <textarea

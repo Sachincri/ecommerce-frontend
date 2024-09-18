@@ -1,5 +1,8 @@
 import React from "react";
+<<<<<<< HEAD
 import { Country, State } from "country-state-city";
+=======
+>>>>>>> 411b6c8 (Initial commit)
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -77,6 +80,7 @@ const Shipping = () => {
             <div>
               <label>Country</label>
 
+<<<<<<< HEAD
               <select
                 value={country}
                 required
@@ -110,6 +114,29 @@ const Shipping = () => {
                 </select>
               </div>
             )}
+=======
+              <input
+                type="text"
+                placeholder="Enter Country"
+                value={country}
+                required
+                onChange={(e) => setCountry(e.target.value)}
+              />
+            </div>
+
+        
+              <div>
+                <label>State</label>
+                <input
+                type="text"
+                placeholder="Enter State"
+                value={state}
+                required
+                onChange={(e) => setState(e.target.value)}
+              />
+              </div>
+    
+>>>>>>> 411b6c8 (Initial commit)
 
             <div>
               <label>Pin Code</label>

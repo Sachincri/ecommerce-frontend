@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Doughnut} from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   Tooltip,
@@ -10,7 +10,7 @@ import {
   LinearScale,
   LineElement,
   PointElement,
-  Title
+  Title,
 } from "chart.js";
 ChartJS.register(
   CategoryScale,
@@ -23,9 +23,7 @@ ChartJS.register(
   Legend
 );
 const DoughnutChart = () => {
-  const { inStock, outOfStock } = useSelector(
-    (state) => state.admin
-  );
+  const { inStock, outOfStock } = useSelector((state) => state.admin);
   const data = {
     labels: ["Out of Stock", "InStock"],
     datasets: [
@@ -43,4 +41,4 @@ const DoughnutChart = () => {
   );
 };
 
-export default DoughnutChart
+export default DoughnutChart;

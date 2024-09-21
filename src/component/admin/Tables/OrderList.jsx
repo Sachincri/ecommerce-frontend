@@ -147,7 +147,7 @@ const OrderList = () => {
       });
     });
   return (
-    <>
+
       <section className="tableClass">
         <Sidebar />
         {loading ? (
@@ -175,7 +175,7 @@ const OrderList = () => {
           </div>
         )}
       </section>
-    </>
+
   );
 };
 

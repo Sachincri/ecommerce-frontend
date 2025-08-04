@@ -86,7 +86,7 @@ function App() {
                   <ProtectedRoute
                     isAuthenticated={!isAuthenticated}
                     redirect={
-                      user && user.role === "admin" ? "/admin/dashboard" : "/me"
+                      user && user.role === "admin" ? "/admin/dashboard" : "/"
                     }
                   >
                     <Login />
@@ -236,7 +236,7 @@ function App() {
                 element={
                   <ProtectedRoute
                     isAuthenticated={!isAuthenticated}
-                    redirect="/me"
+                    redirect="/"
                   >
                     <SignUp />
                   </ProtectedRoute>

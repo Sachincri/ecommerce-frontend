@@ -85,24 +85,6 @@ const Shipping = () => {
               />
             </div>
 
-            <div>
-              <label>State</label>
-              <input
-                type="text"
-                placeholder="Enter Country"
-                value={state}
-                required
-                onChange={(e) => setState(e.target.value)}
-              />
-            </div>
-
-            <input
-              type="text"
-              placeholder="Enter Country"
-              value={country}
-              required
-              onChange={(e) => setCountry(e.target.value)}
-            />
 
             <div>
               <label>State</label>

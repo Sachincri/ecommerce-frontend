@@ -55,14 +55,18 @@ const SignUp = () => {
             </div>
 
             <div>
+
               <input
-                placeholder="Enter Your Password"
+                id="password"
                 type={view ? "text" : "password"}
                 name="password"
+                placeholder="Enter Your Password"
                 value={password}
                 required
+                autoComplete="new-password"
                 onChange={(e) => setPassword(e.target.value)}
               />
+
               {view ? (
                 <VscEye onClick={() => setView(false)} />
               ) : (

@@ -40,7 +40,7 @@ import("./Styles/app.scss");
 
 function App() {
   const { isAuthenticated, error, message, user, loading } = useSelector(
-    (state) => state.user
+    (state) => state?.user
   );
 
   const dispatch = useDispatch();

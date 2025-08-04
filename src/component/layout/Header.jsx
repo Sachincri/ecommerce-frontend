@@ -46,7 +46,7 @@ const Header = () => {
         <Link to={isAuthenticated ? "/me" : "/login"}>
           {isAuthenticated ? (
             <section className="dropdown">
-              <p className="dropbtn">{user.name}</p>
+              <p className="dropbtn">{user && user.name}</p>
               <div className="dropdown-content">
                 {array &&
                   array.map((link, i) => (
